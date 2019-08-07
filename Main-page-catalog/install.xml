@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<modification>
+    <name>Main page catalog module</name>
+    <code>qwerty541</code>
+    <version>1.0</version>
+    <author>Garbuzov Alexandr</author>
+
+    <file path="admin/controller/catalog/product.php">
+        <operation>
+            <search><![CDATA[$this->load->model('catalog/recurring');]]></search>
+            <add position="before"><![CDATA[
+            if (isset($this->request->post['show_on_main_page'])) {
+                $data['show_on_main_page'] = $this->request->post['show_on_main_page'];
+            } elseif (!empty($product_info)) {
+                $data['show_on_main_page'] = $product_info['show_on_main_page'];
+            } else {
+                $data['show_on_main_page'] = 1;
+            }]]></add>
+        </operation>
+    </file>
+
+    <file path="admin/model/catalog/product.php">
+        <operation>
+            <search><![CDATA[sort_order = '" . (int)$data['sort_order'] . "',]]></search>
+            <add position="replace"><![CDATA[sort_order = '" . (int)$data['sort_order'] . "', show_on_main_page = '" . (int)$data['show_on_main_page'] . "',]]></add>
+        </operation>
+    </file>
+
+    <file path="admin/view/template/catalog/product_form.twig">
+        <operation>
+            <search><![CDATA[<input type="text" name="sort_order" value="{{ sort_order }}" placeholder="{{ entry_sort_order }}" id="input-sort-order" class="form-control"/>]]></search>
+            <add position="after" offset="2"><![CDATA[<div class="form-group">
+                <label class="col-sm-2 control-label">{{ entry_show_on_main_page }}</label>
+                <div class="col-sm-10">
+                  <label class="radio-inline">
+                    {% if show_on_main_page %}
+                      <input type="radio" name="show_on_main_page" value="1" checked="checked"/>
+                      {{ text_yes }}
+                    {% else %}
+                      <input type="radio" name="show_on_main_page" value="1"/>
+                      {{ text_yes }}
+                    {% endif %}
+                  </label>
+                  <label class="radio-inline">
+                    {% if not show_on_main_page %}
+                      <input type="radio" name="show_on_main_page" value="0" checked="checked"/>
+                      {{ text_no }}
+                    {% else %}
+                      <input type="radio" name="show_on_main_page" value="0"/>
+                      {{ text_no }}
+                    {% endif %}
+                  </label>
+                </div>
+              </div>]]></add>
+        </operation>
+    </file>
+
+    <file path="admin/language/en-gb/catalog/product.php">
+        <operation>
+            <search><![CDATA[$_['entry_recurring']        = 'Recurring Profile';]]></search>
+            <add position="after"><![CDATA[$_['entry_show_on_main_page'] = 'Show on main page';]]></add>
+        </operation>
+    </file>
+</modification>
