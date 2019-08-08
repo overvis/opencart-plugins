@@ -8,6 +8,8 @@ class ControllerExtensionModuleMpcatalog extends Controller {
         $this->load->model('catalog/product');
         $this->load->model('tool/image');
 
+        $data = [];
+
         $categories = $this->model_extension_module_mpcatalog->getCategoriesForMainPage();
 
         foreach ($categories as $category) {

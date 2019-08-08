@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<modification>
+    <name>Navigation module</name>
+    <code>qwerty541</code>
+    <version>1.0.0</version>
+    <author>Garbuzov Alexandr</author>
+
+    <file path="admin/controller/design/layout.php">
+        <operation>
+            <search><![CDATA[$this->load->model('setting/store');]]></search>
+            <add position="before"><![CDATA[if (isset($this->request->post['show_in_navbar'])) {
+            $data['show_in_navbar'] = $this->request->post['show_in_navbar'];
+        } elseif (!empty($layout_info)) {
+            $data['show_in_navbar'] = $layout_info['show_in_navbar'];
+        } else {
+            $data['show_in_navbar'] = '';
+        }]]></add>
+        </operation>
+    </file>
+
+    <file path="admin/model/design/layout.php">
+        <operation>
+            <search><![CDATA[$this->db->query("UPDATE " . DB_PREFIX . "layout SET name = '" . $this->db->escape($data['name']) . "' WHERE layout_id = '" . (int)$layout_id . "'");]]></search>
+            <add position="replace"><![CDATA[$this->db->query("UPDATE " . DB_PREFIX . "layout SET name = '" . $this->db->escape($data['name']) . "', show_in_navbar = " . (int)$data['show_in_navbar'] . " WHERE layout_id = '" . (int)$layout_id . "'");]]></add>
+        </operation>
+    </file>
+
+    <file path="admin/view/template/design/layout_form.twig">
+        <operation>
+            <search><![CDATA[<table id="route" class="table table-striped table-bordered table-hover">]]></search>
+            <add position="before"><![CDATA[<div class="form-group">
+              <label class="col-sm-2 control-label">{{ entry_show_in_navbar }}</label>
+              <div class="col-sm-10">
+                <label class="radio-inline">
+                  {% if show_in_navbar %}
+                    <input type="radio" name="show_in_navbar" value="1" checked="checked"/>
+                    {{ text_yes }}
+                  {% else %}
+                    <input type="radio" name="show_in_navbar" value="1"/>
+                    {{ text_yes }}
+                  {% endif %}
+                </label>
+                <label class="radio-inline">
+                  {% if not show_in_navbar %}
+                    <input type="radio" name="show_in_navbar" value="0" checked="checked"/>
+                    {{ text_no }}
+                  {% else %}
+                    <input type="radio" name="show_in_navbar" value="0"/>
+                    {{ text_no }}
+                  {% endif %}
+                </label>
+              </div>
+            </div>]]></add>
+        </operation>
+    </file>
+
+    <file path="admin/language/en-gb/design/layout.php">
+        <operation>
+            <search><![CDATA[$_['entry_module']        = 'Module';]]></search>
+            <add position="after"><![CDATA[$_['entry_show_in_navbar'] = 'Show in navbar';]]></add>
+        </operation>
+    </file>
+</modification>
