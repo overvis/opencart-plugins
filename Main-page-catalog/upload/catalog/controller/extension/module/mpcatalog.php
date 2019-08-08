@@ -8,7 +8,15 @@ class ControllerExtensionModuleMpcatalog extends Controller {
         $this->load->model('catalog/product');
         $this->load->model('tool/image');
 
-        $data['categories'] = $this->model_extension_module_mpcatalog->getCategoriesForMainPage();
+        $categories = $this->model_extension_module_mpcatalog->getCategoriesForMainPage();
+
+        foreach ($categories as $category) {
+            $category['description'] = $this->decodeDescription($category['description']);
+            $category['href'] = $this->url->link('product/category', 'path=' . $category['id']);
+
+            $data['categories'][] = $category;
+        }
+
         $products = $this->model_extension_module_mpcatalog->getProductsForMainPage();
 
         foreach ($products as $product) {
@@ -51,7 +59,7 @@ class ControllerExtensionModuleMpcatalog extends Controller {
                     'id'          => $productInfo['product_id'],
                     'category_id' => $product['category_id'],
                     'name'        => $productInfo['name'],
-                    'description' => utf8_substr(strip_tags(html_entity_decode($productInfo['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '...',
+                    'description' => $this->decodeDescription($productInfo['description']) . '...',
                     'thumb'       => $image,
                     'href'        => $this->url->link('product/product', 'product_id=' . $productInfo['product_id']),
                     'price'       => $price,
@@ -63,5 +71,13 @@ class ControllerExtensionModuleMpcatalog extends Controller {
         }
 
         return $this->load->view('extension/module/mpcatalog', $data);
+    }
+
+    private function decodeDescription($description) {
+        return utf8_substr(
+            strip_tags(html_entity_decode($description, ENT_QUOTES, 'UTF-8')),
+            0,
+            $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length'
+            ));
     }
 }

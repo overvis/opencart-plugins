@@ -1,7 +1,7 @@
 <?php
 
 class ControllerExtensionModuleMpcatalog extends Controller {
-    private $error = array();
+    private $error = [];
 
     public function index() {
         $this->load->language('extension/module/mpcatalog');
@@ -18,38 +18,30 @@ class ControllerExtensionModuleMpcatalog extends Controller {
             $this->response->redirect($this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true));
         }
 
-        if (isset($this->error['warning'])) {
-            $data['error_warning'] = $this->error['warning'];
-        } else {
-            $data['error_warning'] = '';
-        }
+        $data['error_warning'] = isset($this->error['warning']) ? $this->error['warning'] : '';
 
-        $data['breadcrumbs'] = array();
-
-        $data['breadcrumbs'][] = array(
-            'text' => $this->language->get('text_home'),
-            'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true)
-        );
-
-        $data['breadcrumbs'][] = array(
-            'text' => $this->language->get('text_extension'),
-            'href' => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true)
-        );
-
-        $data['breadcrumbs'][] = array(
-            'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('extension/module/mpcatalog', 'user_token=' . $this->session->data['user_token'], true)
-        );
+        $data['breadcrumbs'] = [
+            [
+                'text' => $this->language->get('text_home'),
+                'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true)
+            ],
+            [
+                'text' => $this->language->get('text_extension'),
+                'href' => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true)
+            ],
+            [
+                'text' => $this->language->get('heading_title'),
+                'href' => $this->url->link('extension/module/mpcatalog', 'user_token=' . $this->session->data['user_token'], true)
+            ]
+        ];
 
         $data['action'] = $this->url->link('extension/module/mpcatalog', 'user_token=' . $this->session->data['user_token'], true);
 
         $data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true);
 
-        if (isset($this->request->post['module_mpcatalog_status'])) {
-            $data['module_mpcatalog_status'] = $this->request->post['module_mpcatalog_status'];
-        } else {
-            $data['module_mpcatalog_status'] = $this->config->get('module_mpcatalog_status');
-        }
+        $data['module_mpcatalog_status'] = isset($this->request->post['module_mpcatalog_status'])
+            ? $this->request->post['module_mpcatalog_status']
+            : $this->config->get('module_mpcatalog_status');
 
         $data['header'] = $this->load->controller('common/header');
         $data['column_left'] = $this->load->controller('common/column_left');

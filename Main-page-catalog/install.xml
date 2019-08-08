@@ -2,7 +2,7 @@
 <modification>
     <name>Main page catalog module</name>
     <code>qwerty541</code>
-    <version>1.0</version>
+    <version>1.1.0</version>
     <author>Garbuzov Alexandr</author>
 
     <file path="admin/controller/catalog/product.php">
