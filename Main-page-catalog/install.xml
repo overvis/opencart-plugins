@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <modification>
     <name>Main page catalog module</name>
-    <code>qwerty541</code>
-    <version>1.1.1</version>
+    <code>mpcatalog</code>
+    <version>3.x</version>
     <author>Garbuzov Alexandr</author>
 
     <file path="admin/controller/catalog/product.php">

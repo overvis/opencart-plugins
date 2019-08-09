@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <modification>
     <name>Navigation module</name>
-    <code>qwerty541</code>
-    <version>1.0.1</version>
+    <code>navigation</code>
+    <version>3.x</version>
     <author>Garbuzov Alexandr</author>
 
     <file path="admin/controller/design/layout.php">
