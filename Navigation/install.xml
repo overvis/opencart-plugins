@@ -2,7 +2,7 @@
 <modification>
     <name>Navigation module</name>
     <code>qwerty541</code>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <author>Garbuzov Alexandr</author>
 
     <file path="admin/controller/design/layout.php">
@@ -13,7 +13,7 @@
         } elseif (!empty($layout_info)) {
             $data['show_in_navbar'] = $layout_info['show_in_navbar'];
         } else {
-            $data['show_in_navbar'] = '';
+            $data['show_in_navbar'] = 0;
         }]]></add>
         </operation>
     </file>

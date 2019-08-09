@@ -2,7 +2,7 @@
 <modification>
     <name>Main page catalog module</name>
     <code>qwerty541</code>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <author>Garbuzov Alexandr</author>
 
     <file path="admin/controller/catalog/product.php">
@@ -14,7 +14,7 @@
             } elseif (!empty($product_info)) {
                 $data['show_on_main_page'] = $product_info['show_on_main_page'];
             } else {
-                $data['show_on_main_page'] = 1;
+                $data['show_on_main_page'] = 0;
             }]]></add>
         </operation>
     </file>
