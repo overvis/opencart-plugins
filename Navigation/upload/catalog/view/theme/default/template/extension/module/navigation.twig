@@ -1,6 +1,13 @@
 <style>
     .navbar {margin-top: 30px;}
-    .navbar .dropdown .fa-th-list {margin-right: 5px;}
+    @media only screen and (min-width: 767px) {
+        .navbar li:hover {background-color: #e7e7e7;}
+        .navbar-collapse {padding-left: 0;}
+        .navbar-right {height: 52px;}
+        .navbar-right li {height: 100%;}
+    }
+    .navbar .dropdown .fa-th-large {margin-right: 8px; font-size: 22px;}
+    .navbar .dropdown > a {display: flex; align-items: center;}
     .navbar a {font-size: 16px;}
 </style>
 
@@ -29,7 +36,7 @@
                        role="button"
                        aria-haspopup="true"
                        aria-expanded="false">
-                        <i class="fa fa-th-list" aria-hidden="true"></i>
+                        <i class="fa fa-th-large" aria-hidden="true"></i>
                         {{ all_categories_button_text }}
                         <span class="caret"></span>
                     </a>
