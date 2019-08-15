@@ -1,0 +1,62 @@
+{% if not cookie_consent %}
+    <style>
+        .cookie_consent_block {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background-color: {{ block_color }};
+            color: {{ text_color }};
+            font-size: 22px;
+            z-index: 1;
+        }
+        .cookie_consent_block > p {margin: 0;}
+        .cookie_consent_block > button {
+            background-color: transparent;
+            background-repeat: no-repeat;
+            margin-left: 10px;
+            padding: 5px 10px;
+            border-color: {{ button_color }};
+            color: {{ button_color }};
+        }
+        .cookie_consent_block > button:hover {
+            border-color: {{ button_color_on_hover }};
+            color: {{ button_color_on_hover }};
+        }
+        @media only screen and (max-width: 767px) {
+            .cookie_consent_block {
+                font-size: 16px;
+                padding: 0 10px;
+            }
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            $('.cookie_consent_block > button').click(function() {
+                var cookieString = '';
+                var cookieProperties = {
+                    cookie_consent: 1,
+                    path: '/',
+                    'max-age': 60 * 60 * 24 * 360
+                };
+
+                for (var property in cookieProperties) {
+                    cookieString += encodeURIComponent(property) + '=' + encodeURIComponent(cookieProperties[property]) + '; ';
+                }
+
+                document.cookie = cookieString;
+                $(this).parent().remove();
+            })
+        });
+    </script>
+
+    <div class="cookie_consent_block">
+        <p>{{ consent_text }}</p>
+        <button>{{ consent_button }}</button>
+    </div>
+{% endif %}
