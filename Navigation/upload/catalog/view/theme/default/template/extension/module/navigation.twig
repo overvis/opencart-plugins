@@ -1,14 +1,26 @@
 <style>
     .navbar {margin-top: 30px;}
+    .navbar-default {
+        background-color: {{ menu_color }};
+        border-color: {{ menu_border_color }};
+        color: {{ text_color }};
+    }
+    .navbar .dropdown .{{ icon_fa_class }} {
+        margin-right: 8px;
+        font-size: 22px;
+    }
+    .navbar .dropdown > a {
+        display: flex;
+        align-items: center;
+    }
+    .navbar .dropdown-menu {background-color: {{ dropdown_menu_color }};}
+    .navbar a {font-size: 16px;}
     @media only screen and (min-width: 767px) {
-        .navbar li:hover {background-color: #e7e7e7;}
+        .navbar li:hover {background-color: {{ button_color_on_hover }};}
         .navbar-collapse {padding-left: 0;}
         .navbar-right {height: 52px;}
         .navbar-right li {height: 100%;}
     }
-    .navbar .dropdown .fa-th-large {margin-right: 8px; font-size: 22px;}
-    .navbar .dropdown > a {display: flex; align-items: center;}
-    .navbar a {font-size: 16px;}
 </style>
 
 <nav class="navbar navbar-default">
@@ -36,7 +48,7 @@
                        role="button"
                        aria-haspopup="true"
                        aria-expanded="false">
-                        <i class="fa fa-th-large" aria-hidden="true"></i>
+                        <i class="fa {{ icon_fa_class }}" aria-hidden="true"></i>
                         {{ all_categories_button_text }}
                         <span class="caret"></span>
                     </a>

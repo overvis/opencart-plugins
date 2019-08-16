@@ -31,22 +31,29 @@ class ControllerExtensionModuleCookie extends Controller {
             $data["error_$value"] = isset($this->error[$value]) ? $this->error[$value] : '';
         }
 
-        $data['breadcrumbs'] = [
-            [
-                'text' => $this->language->get('text_home'),
-                'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true)
-            ],
-            [
-                'text' => $this->language->get('text_extension'),
-                'href' => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true)
-            ],
-            [
-                'text' => $this->language->get('heading_title'),
-                'href' => $this->url->link('extension/module/cookie', 'user_token=' . $this->session->data['user_token'], true)
-            ]
+        $data['breadcrumbs'] = [];
+
+        $data['breadcrumbs'][] = [
+            'text' => $this->language->get('text_home'),
+            'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true)
         ];
 
-        $data['action'] = $this->url->link('extension/module/cookie', 'user_token=' . $this->session->data['user_token'], true);
+        $data['breadcrumbs'][] = [
+            'text' => $this->language->get('text_extension'),
+            'href' => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true)
+        ];
+
+        if (!isset($this->request->get['module_id'])) {
+            $data['breadcrumbs'][] = [
+                'text' => $this->language->get('heading_title'),
+                'href' => $this->url->link('extension/module/cookie', 'user_token=' . $this->session->data['user_token'], true)
+            ];
+        } else {
+            $data['breadcrumbs'][] = [
+                'text' => $this->language->get('heading_title'),
+                'href' => $this->url->link('extension/module/cookie', 'user_token=' . $this->session->data['user_token'] . '&module_id=' . $this->request->get['module_id'], true)
+            ];
+        }
 
         if (!isset($this->request->get['module_id'])) {
             $data['action'] = $this->url->link('extension/module/cookie', 'user_token=' . $this->session->data['user_token'], true);
@@ -54,35 +61,19 @@ class ControllerExtensionModuleCookie extends Controller {
             $data['action'] = $this->url->link('extension/module/cookie', 'user_token=' . $this->session->data['user_token'] . '&module_id=' . $this->request->get['module_id'], true);
         }
 
+        $data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true);
+
         if (isset($this->request->get['module_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
             $module_info = $this->model_setting_module->getModule($this->request->get['module_id']);
         }
 
         $forValidation = [
-            [
-                'name' => 'name',
-                'default' => ''
-            ],
-            [
-                'name' => 'block_color',
-                'default' => 'rgba(0, 0, 0, .7)'
-            ],
-            [
-                'name' => 'status',
-                'default' => ''
-            ],
-            [
-                'name' => 'text_color',
-                'default' => 'white'
-            ],
-            [
-                'name' => 'button_color',
-                'default' => '#35f067'
-            ],
-            [
-                'name' => 'button_color_on_hover',
-                'default' => '#2bc253'
-            ]
+            ['name' => 'name', 'default' => ''],
+            ['name' => 'block_color', 'default' => 'rgba(0, 0, 0, .7)'],
+            ['name' => 'status', 'default' => ''],
+            ['name' => 'text_color', 'default' => 'white'],
+            ['name' => 'button_color', 'default' => '#35f067'],
+            ['name' => 'button_color_on_hover', 'default' => '#2bc253']
         ];
 
         foreach ($forValidation as $value) {
@@ -94,10 +85,6 @@ class ControllerExtensionModuleCookie extends Controller {
                 $data[$value['name']] = $value['default'];
             }
         }
-
-        $data['module_cookie_status'] = isset($this->request->post['module_cookie_status'])
-            ? $this->request->post['module_cookie_status']
-            : $this->config->get('module_cookie_status');
 
         $data['header'] = $this->load->controller('common/header');
         $data['column_left'] = $this->load->controller('common/column_left');

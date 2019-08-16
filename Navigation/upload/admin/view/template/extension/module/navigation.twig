@@ -28,8 +28,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
                         <div class="col-sm-10">
-                            <select name="module_navigation_status" id="input-status" class="form-control">
-                                {% if module_navigation_status %}
+                            <select name="status" id="input-status" class="form-control">
+                                {% if status %}
                                     <option value="1" selected="selected">{{ text_enabled }}</option>
                                     <option value="0">{{ text_disabled }}</option>
                                 {% else %}
@@ -37,6 +37,113 @@
                                     <option value="0" selected="selected">{{ text_disabled }}</option>
                                 {% endif %}
                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-name">{{ entry_name }}</label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="name"
+                                   value="{{ name }}"
+                                   placeholder="{{ entry_name }}"
+                                   id="input-name"
+                                   class="form-control" />
+                            {% if error_name %}
+                                <div class="text-danger">{{ error_name }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-menu_color">{{ entry_menu_color }}</label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="menu_color"
+                                   value="{{ menu_color }}"
+                                   placeholder="{{ entry_menu_color }}"
+                                   id="input-menu_color"
+                                   class="form-control" />
+                            {% if error_menu_color %}
+                                <div class="text-danger">{{ error_menu_color }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"
+                               for="input-menu_border_color">
+                            {{ entry_menu_border_color }}
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="menu_border_color"
+                                   value="{{ menu_border_color }}"
+                                   placeholder="{{ entry_menu_border_color }}"
+                                   id="input-menu_border_color"
+                                   class="form-control" />
+                            {% if error_menu_border_color %}
+                                <div class="text-danger">{{ error_menu_border_color }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-text_color">{{ entry_text_color }}</label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="text_color"
+                                   value="{{ text_color }}"
+                                   placeholder="{{ entry_text_color }}"
+                                   id="input-text_color"
+                                   class="form-control" />
+                            {% if error_text_color %}
+                                <div class="text-danger">{{ error_text_color }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"
+                               for="input-button_color_on_hover">
+                            {{ entry_button_color_on_hover }}
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="button_color_on_hover"
+                                   value="{{ button_color_on_hover }}"
+                                   placeholder="{{ entry_button_color_on_hover }}"
+                                   id="input-button_color_on_hover"
+                                   class="form-control" />
+                            {% if error_button_color_on_hover %}
+                                <div class="text-danger">{{ error_button_color_on_hover }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-icon_fa_class">{{ entry_icon_fa_class }}</label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="icon_fa_class"
+                                   value="{{ icon_fa_class }}"
+                                   placeholder="{{ entry_icon_fa_class }}"
+                                   id="input-icon_fa_class"
+                                   class="form-control" />
+                            {% if error_icon_fa_class %}
+                                <div class="text-danger">{{ error_icon_fa_class }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"
+                               for="input-dropdown_menu_color">
+                            {{ entry_dropdown_menu_color }}
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text"
+                                   name="dropdown_menu_color"
+                                   value="{{ dropdown_menu_color }}"
+                                   placeholder="{{ entry_dropdown_menu_color }}"
+                                   id="input-dropdown_menu_color"
+                                   class="form-control" />
+                            {% if error_dropdown_menu_color %}
+                                <div class="text-danger">{{ error_dropdown_menu_color }}</div>
+                            {% endif %}
                         </div>
                     </div>
                 </form>
