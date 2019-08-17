@@ -18,7 +18,9 @@ class ControllerExtensionModuleNavigation extends Controller {
                         'filter_category_id'  => $category['category_id'],
                         'filter_sub_category' => true
                     ]) . ')',
-                'href' => $this->url->link('product/category', 'path=' . $category['category_id'])
+                'href' => $this->url->link('product/category', http_build_query([
+                    'path' => $category['category_id']
+                ]))
             ];
         }
 

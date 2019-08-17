@@ -14,7 +14,9 @@ class ControllerExtensionModuleMpcatalog extends Controller {
 
         foreach ($categories as $category) {
             $category['description'] = $this->decodeDescription($category['description']);
-            $category['href'] = $this->url->link('product/category', 'path=' . $category['id']);
+            $category['href'] = $this->url->link('product/category', http_build_query([
+                'path' => $category['id']
+            ]));
 
             $data['categories'][] = $category;
         }
@@ -63,7 +65,9 @@ class ControllerExtensionModuleMpcatalog extends Controller {
                     'name'        => $productInfo['name'],
                     'description' => $this->decodeDescription($productInfo['description']) . '...',
                     'thumb'       => $image,
-                    'href'        => $this->url->link('product/product', 'product_id=' . $productInfo['product_id']),
+                    'href'        => $this->url->link('product/product', http_build_query([
+                        'product_id' => $productInfo['product_id']
+                    ])),
                     'price'       => $price,
                     'special'     => $special,
                     'tax'         => $tax,
@@ -80,6 +84,6 @@ class ControllerExtensionModuleMpcatalog extends Controller {
             strip_tags(html_entity_decode($description, ENT_QUOTES, 'UTF-8')),
             0,
             $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length'
-            ));
+        ));
     }
 }
