@@ -8,8 +8,16 @@ class ControllerExtensionModuleCookie extends Controller {
 
         $this->document->setTitle($this->language->get('heading_title'));
 
-        $this->load->model('setting/setting');
         $this->load->model('setting/module');
+
+        $queryStringWithUserToken = http_build_query([
+            'user_token' => $this->session->data['user_token']
+        ]);
+
+        $queryStringWithUserTokenAndType = http_build_query([
+            'user_token' => $this->session->data['user_token'],
+            'type' => 'module'
+        ]);
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
             if (!isset($this->request->get['module_id'])) {
@@ -18,11 +26,9 @@ class ControllerExtensionModuleCookie extends Controller {
                 $this->model_setting_module->editModule($this->request->get['module_id'], $this->request->post);
             }
 
-            $this->model_setting_setting->editSetting('module_cookie', $this->request->post);
-
             $this->session->data['success'] = $this->language->get('text_success');
 
-            $this->response->redirect($this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true));
+            $this->response->redirect($this->url->link('marketplace/extension', $queryStringWithUserTokenAndType, true));
         }
 
         $errorsToData = ['warning', 'name', 'block_color', 'text_color', 'button_color', 'button_color_on_hover'];
@@ -35,33 +41,27 @@ class ControllerExtensionModuleCookie extends Controller {
 
         $data['breadcrumbs'][] = [
             'text' => $this->language->get('text_home'),
-            'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true)
+            'href' => $this->url->link('common/dashboard', $queryStringWithUserToken, true)
         ];
 
         $data['breadcrumbs'][] = [
             'text' => $this->language->get('text_extension'),
-            'href' => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true)
+            'href' => $this->url->link('marketplace/extension', $queryStringWithUserTokenAndType, true)
         ];
 
-        if (!isset($this->request->get['module_id'])) {
-            $data['breadcrumbs'][] = [
-                'text' => $this->language->get('heading_title'),
-                'href' => $this->url->link('extension/module/cookie', 'user_token=' . $this->session->data['user_token'], true)
-            ];
-        } else {
-            $data['breadcrumbs'][] = [
-                'text' => $this->language->get('heading_title'),
-                'href' => $this->url->link('extension/module/cookie', 'user_token=' . $this->session->data['user_token'] . '&module_id=' . $this->request->get['module_id'], true)
-            ];
-        }
+        $data['breadcrumbs'][] = [
+            'text' => $this->language->get('heading_title'),
+            'href' => $this->url->link(
+                'extension/module/cookie',
+                $queryStringWithUserTokenAndModuleId = http_build_query([
+                    'user_token' => $this->session->data['user_token'],
+                    'module_id' => $this->request->get['module_id'] ?? null
+                ]), true)
+        ];
 
-        if (!isset($this->request->get['module_id'])) {
-            $data['action'] = $this->url->link('extension/module/cookie', 'user_token=' . $this->session->data['user_token'], true);
-        } else {
-            $data['action'] = $this->url->link('extension/module/cookie', 'user_token=' . $this->session->data['user_token'] . '&module_id=' . $this->request->get['module_id'], true);
-        }
+        $data['action'] = $this->url->link('extension/module/cookie', $queryStringWithUserTokenAndModuleId, true);
 
-        $data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true);
+        $data['cancel'] = $this->url->link('marketplace/extension', $queryStringWithUserTokenAndType, true);
 
         if (isset($this->request->get['module_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
             $module_info = $this->model_setting_module->getModule($this->request->get['module_id']);
