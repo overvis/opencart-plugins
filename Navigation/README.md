@@ -69,4 +69,4 @@ The navigation bar is adaptive and will look good on all devices. In the screens
 
 ### Support
 
-If you have any questions you can ask them here https://github.com/overvis/opencart-plugins/issues
+If you have any questions you can ask them [here](https://github.com/overvis/opencart-plugins/issues)
