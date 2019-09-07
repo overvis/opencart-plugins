@@ -13,9 +13,9 @@ The navigation bar is adaptive and will look good on all devices. In the screens
 
 **Important!** The drop-down list supports only one level of categories.
 
-![Desktop version](https://github.com/overvis/opencart-plugins/blob/master/Navigation/docs/img/desktop.jpg?raw=true)
+![Desktop version](./docs/img/desktop.jpg)
 
-![Mobile version](https://github.com/overvis/opencart-plugins/blob/master/Navigation/docs/img/mobile.jpg?raw=true)
+![Mobile version](./docs/img/mobile.jpg)
 
 ### Installation and configuration 
 
