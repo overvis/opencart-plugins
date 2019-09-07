@@ -2,7 +2,7 @@
 
 Please see READMEs in subprojects for details:
 
-* [Navigation](Simple-Navigation-Bar/README.md)
+* [Simple Navigation Bar](Simple-Navigation-Bar/README.md)
 * Main Page Catalog
 * Cookie Consent
 
