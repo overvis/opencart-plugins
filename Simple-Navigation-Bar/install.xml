@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <modification>
-    <name>Navigation module</name>
+    <name>Simple navigation bar module</name>
     <code>navigation</code>
     <version>3.x</version>
     <author>Garbuzov Alexandr</author>

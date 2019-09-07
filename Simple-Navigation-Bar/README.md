@@ -1,4 +1,4 @@
-# OpenCart Navigation Plugin
+# OpenCart Simple navigation bar plugin
 
 ### Requirements
 
@@ -13,13 +13,13 @@ The navigation bar is adaptive and will look good on all devices. In the screens
 
 **Important!** The drop-down list supports only one level of categories.
 
-![Desktop version](./docs/img/desktop.jpg)
+![Desktop version](https://github.com/overvis/opencart-plugins/blob/master/Navigation/docs/img/desktop.jpg?raw=true)
 
-![Mobile version](./docs/img/mobile.jpg)
+![Mobile version](https://github.com/overvis/opencart-plugins/blob/master/Navigation/docs/img/mobile.jpg?raw=true)
 
 ### Installation and configuration 
 
-1. Download Navigation plugin zip.
+1. Download Simple navigation bar plugin zip.
 
 2. Connect to OpenCart admin panel.
 
@@ -32,13 +32,13 @@ The navigation bar is adaptive and will look good on all devices. In the screens
 4. Install the plugin:
 
     ```
-    Extensions -> Extensions -> Modules -> Navigation -> Install
+    Extensions -> Extensions -> Modules -> Simple navigation bar -> Install
     ```
 
 5. Go to config page:
 
     ```
-    Extensions -> Extensions -> Modules -> Navigation -> Add new
+    Extensions -> Extensions -> Modules -> Simple navigation bar -> Add new
     ```
 
 6. Change the settings as necessary or leave the default ones.
