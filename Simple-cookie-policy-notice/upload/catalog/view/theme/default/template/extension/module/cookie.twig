@@ -1,6 +1,6 @@
 {% if not cookie_consent %}
     <style>
-        .cookie_consent_block {
+        .cookie_notice_block {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -14,8 +14,8 @@
             font-size: 22px;
             z-index: 1;
         }
-        .cookie_consent_block > p {margin: 0;}
-        .cookie_consent_block > button {
+        .cookie_notice_block > p {margin: 0;}
+        .cookie_notice_block > button {
             background-color: transparent;
             background-repeat: no-repeat;
             margin-left: 10px;
@@ -23,12 +23,12 @@
             border-color: {{ button_color }};
             color: {{ button_color }};
         }
-        .cookie_consent_block > button:hover {
+        .cookie_notice_block > button:hover {
             border-color: {{ button_color_on_hover }};
             color: {{ button_color_on_hover }};
         }
         @media only screen and (max-width: 767px) {
-            .cookie_consent_block {
+            .cookie_notice_block {
                 font-size: 16px;
                 padding: 0 10px;
             }
@@ -37,7 +37,7 @@
 
     <script>
         $(document).ready(function() {
-            $('.cookie_consent_block > button').click(function() {
+            $('.cookie_notice_block > button').click(function() {
                 var cookieString = '';
                 var cookieProperties = {
                     cookie_consent: 1,
@@ -55,7 +55,7 @@
         });
     </script>
 
-    <div class="cookie_consent_block">
+    <div class="cookie_notice_block">
         <p>{{ consent_text }}</p>
         <button>{{ consent_button }}</button>
     </div>
