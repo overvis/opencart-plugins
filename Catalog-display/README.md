@@ -19,7 +19,7 @@ This plugin provides you an ability to display a catalog of selected products on
 
 ### Installation and configuration
 
-1. Download Catalog display plugin zip.
+1. Download Catalog display plugin [zip](./Catalog-display.ocmod.zip).
 
 2. Connect to OpenCart admin panel.
 

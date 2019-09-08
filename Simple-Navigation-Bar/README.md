@@ -19,7 +19,7 @@ The navigation bar is adaptive and will look good on all devices. In the screens
 
 ### Installation and configuration
 
-1. Download Simple navigation bar plugin zip.
+1. Download Simple navigation bar plugin [zip](./Simple-Navigation-Bar.ocmod.zip).
 
 2. Connect to OpenCart admin panel.
 
