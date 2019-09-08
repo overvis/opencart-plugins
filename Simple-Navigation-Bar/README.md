@@ -17,7 +17,7 @@ The navigation bar is adaptive and will look good on all devices. In the screens
 
 ![Mobile version](./docs/img/mobile.jpg)
 
-### Installation and configuration 
+### Installation and configuration
 
 1. Download Simple navigation bar plugin zip.
 
@@ -51,7 +51,7 @@ The navigation bar is adaptive and will look good on all devices. In the screens
     Design -> Layouts -> *Layout name* -> Edit
     ```
 
-9. Select the plugin in the drop-down at the top of the section **Content Top**.
+9. Select the plugin in the drop-down list at the top of the section you need.
 
 10. Save changes.
 

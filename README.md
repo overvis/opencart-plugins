@@ -3,7 +3,7 @@
 Please see READMEs in subprojects for details:
 
 * [Simple Navigation Bar](Simple-Navigation-Bar/README.md)
-* Main Page Catalog
+* [Catalog display](Catalog-display/README.md)
 * Cookie Consent
 
 # License
