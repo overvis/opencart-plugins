@@ -75,7 +75,7 @@ class ControllerExtensionModuleCatalogd extends Controller {
         $settings['module_catalogd_status'] = 1;
         $this->model_setting_setting->editSetting('module_catalogd', $settings);
 
-        $this->db->query('ALTER TABLE ' . DB_PREFIX . 'product ADD show_on_main_page int(1) DEFAULT 0');
+        $this->db->query('ALTER TABLE ' . DB_PREFIX . 'product ADD show_in_catalog int(1) DEFAULT 0');
     }
 
     public function uninstall() {
@@ -84,6 +84,6 @@ class ControllerExtensionModuleCatalogd extends Controller {
         $this->model_setting_setting->deleteSetting('module_catalogd');
 
         $this->db->query("SET GLOBAL SQL_MODE = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'");
-        $this->db->query('ALTER TABLE ' . DB_PREFIX . 'product DROP show_on_main_page');
+        $this->db->query('ALTER TABLE ' . DB_PREFIX . 'product DROP show_in_catalog');
     }
 }
