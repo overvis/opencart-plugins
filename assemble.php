@@ -7,6 +7,27 @@
 $excludeDirs = ['.git', '.idea'];
 $excludeFromZip = ['docs'];
 
+/**
+ * @param SplFileInfo $file
+ * @param string $key
+ * @param RecursiveDirectoryIterator $iterator
+ *
+ * @return bool
+ */
+$filter = function (
+    SplFileInfo $file,
+    string $key,
+    RecursiveDirectoryIterator $iterator
+) use ($excludeFromZip): bool {
+    if (
+        $iterator->hasChildren()
+        && !in_array($file->getFilename(), $excludeFromZip)
+    ) {
+        return true;
+    }
+    return $file->isFile();
+};
+
 foreach (glob(dirname(__FILE__) . '/*', GLOB_ONLYDIR) as $dirPath) {
     $dirName = basename($dirPath);
 
@@ -21,23 +42,6 @@ foreach (glob(dirname(__FILE__) . '/*', GLOB_ONLYDIR) as $dirPath) {
         if (file_exists($zipName)) unlink($zipName);
 
         $zip->open($zipName, ZipArchive::CREATE);
-
-        /**
-         * @param SplFileInfo $file
-         * @param mixed $key
-         * @param RecursiveCallbackFilterIterator $iterator
-         *
-         * @return bool
-         */
-        $filter = function ($file, $key, $iterator) use ($excludeFromZip) {
-            if (
-                $iterator->hasChildren()
-                && !in_array($file->getFilename(), $excludeFromZip)
-            ) {
-                return true;
-            }
-            return $file->isFile();
-        };
 
         $innerIterator = new RecursiveDirectoryIterator(
             $dirPath,
