@@ -1,11 +1,11 @@
 # OpenCart Simple navigation bar plugin
 
-### Requirements
+## Requirements
 
 * Opencart: 3.x
 * PHP: >=7.0
 
-### Description
+## Description
 
 This plugin adds a navigation bar to your OpenCart store. Navigation contains a drop-down list of product categories and some pages (you can select them in the admin panel). Plugin supports a large number of settings for visual customization, so it’s easy to adjust the navigation bar to the color scheme of your site. 
 
@@ -17,7 +17,7 @@ The navigation bar is adaptive and will look good on all devices. In the screens
 
 ![Mobile version](./docs/img/mobile.jpg)
 
-### Installation and configuration
+## Installation and configuration
 
 1. Download Simple navigation bar plugin [zip](./Simple-Navigation-Bar.ocmod.zip).
 
@@ -55,7 +55,7 @@ The navigation bar is adaptive and will look good on all devices. In the screens
 
 10. Save changes.
 
-### How to select pages to display in the navigation:
+## How to select pages to display in the navigation:
 
 1. Find a layout, link to which you want to display in the navigation bar:
 
@@ -67,6 +67,6 @@ The navigation bar is adaptive and will look good on all devices. In the screens
 
 3. Save changes.
 
-### Support
+## Support
 
 If you have any questions you can ask them [here](https://github.com/overvis/opencart-plugins/issues)

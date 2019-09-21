@@ -1,6 +1,6 @@
 # OpenCart Simple cookie policy notice plugin
 
-### Requirements
+## Requirements
 
 * Opencart: 3.x
 * PHP: >=7.0
@@ -15,7 +15,7 @@ The notice bar is adaptive and will look good on all devices. In the screenshot 
 
 ![Mobile version](./docs/img/mobile.jpg)
 
-### Installation and configuration
+## Installation and configuration
 
 1. Download Simple navigation bar plugin [zip](./Simple-cookie-policy-notice.ocmod.zip).
 
@@ -53,6 +53,6 @@ The notice bar is adaptive and will look good on all devices. In the screenshot 
 
 10. Save changes.
 
-### Support
+## Support
 
 If you have any questions you can ask them [here](https://github.com/overvis/opencart-plugins/issues)
