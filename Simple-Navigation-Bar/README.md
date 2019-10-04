@@ -55,7 +55,7 @@ The navigation bar is adaptive and will look good on all devices. In the screens
 
 10. Save changes.
 
-## How to select pages to display in the navigation:
+## How to select pages to display in the navigation
 
 1. Find a layout, link to which you want to display in the navigation bar:
 
