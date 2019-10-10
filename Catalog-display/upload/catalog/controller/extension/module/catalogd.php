@@ -13,7 +13,7 @@ class ControllerExtensionModuleCatalogd extends Controller {
         $categories = $this->model_extension_module_catalogd->getCategoriesForMainPage();
 
         foreach ($categories as $category) {
-            $category['description'] = $this->decodeDescription($category['description']);
+            $category['description'] = $this->decodeDescription($category['description'], null);
             $category['href'] = $this->url->link('product/category', http_build_query([
                 'path' => $category['id']
             ]));
@@ -63,7 +63,10 @@ class ControllerExtensionModuleCatalogd extends Controller {
                     'id'          => $productInfo['product_id'],
                     'category_id' => $product['category_id'],
                     'name'        => $productInfo['name'],
-                    'description' => $this->decodeDescription($productInfo['description']) . '...',
+                    'description' => $this->decodeDescription(
+                        $productInfo['description'],
+                        110
+                    ) . '...',
                     'thumb'       => $image,
                     'href'        => $this->url->link('product/product', http_build_query([
                         'product_id' => $productInfo['product_id']
@@ -79,11 +82,15 @@ class ControllerExtensionModuleCatalogd extends Controller {
         return $this->load->view('extension/module/catalogd', $data);
     }
 
-    private function decodeDescription($description) {
+    private function decodeDescription($description, $length) {
         return utf8_substr(
-            strip_tags(html_entity_decode($description, ENT_QUOTES, 'UTF-8')),
+            strip_tags(html_entity_decode(
+                $description,
+                ENT_QUOTES,
+                'UTF-8'
+            )),
             0,
-            $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length'
-        ));
+            $length
+        );
     }
 }
