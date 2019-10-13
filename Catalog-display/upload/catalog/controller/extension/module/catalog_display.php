@@ -1,16 +1,16 @@
 <?php
 
-class ControllerExtensionModuleCatalogd extends Controller {
+class ControllerExtensionModuleCatalogDisplay extends Controller {
     public function index() {
-        $this->load->language('extension/module/catalogd');
+        $this->load->language('extension/module/catalog_display');
 
-        $this->load->model('extension/module/catalogd');
+        $this->load->model('extension/module/catalog_display');
         $this->load->model('catalog/product');
         $this->load->model('tool/image');
 
         $data = [];
 
-        $categories = $this->model_extension_module_catalogd->getCategoriesForMainPage();
+        $categories = $this->model_extension_module_catalog_display->getCategoriesForMainPage();
 
         foreach ($categories as $category) {
             $category['description'] = $this->decodeDescription($category['description'], null);
@@ -21,7 +21,7 @@ class ControllerExtensionModuleCatalogd extends Controller {
             $data['categories'][] = $category;
         }
 
-        $products = $this->model_extension_module_catalogd->getProductsForMainPage();
+        $products = $this->model_extension_module_catalog_display->getProductsForMainPage();
 
         foreach ($products as $product) {
             $productInfo = $this->model_catalog_product->getProduct($product['id']);
@@ -79,7 +79,7 @@ class ControllerExtensionModuleCatalogd extends Controller {
             }
         }
 
-        return $this->load->view('extension/module/catalogd', $data);
+        return $this->load->view('extension/module/catalog_display', $data);
     }
 
     private function decodeDescription($description, $length) {

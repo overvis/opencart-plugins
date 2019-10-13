@@ -1,6 +1,6 @@
 <?php
 
-class ModelExtensionModuleCatalogd extends Model {
+class ModelExtensionModuleCatalogDisplay extends Model {
     public function getProductsForMainPage() {
         $sql = 'SELECT d.product_id AS id, '
                 . 'c.category_id AS category_id, '
