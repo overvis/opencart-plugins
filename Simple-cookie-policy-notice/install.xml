@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <modification>
     <name>Simple cookie policy notice module</name>
-    <code>cookie</code>
+    <code>cookie_notice</code>
     <version>3.x</version>
     <author>Garbuzov Alexandr</author>
 </modification>
