@@ -2,9 +2,10 @@
 
 Please see READMEs in subprojects for details:
 
-* [Simple Navigation Bar](Simple-Navigation-Bar/README.md)
 * [Catalog display](Catalog-display/README.md)
+* Insert html
 * [Simple cookie policy notice](Simple-cookie-policy-notice/README.md)
+* [Simple Navigation Bar](Simple-Navigation-Bar/README.md)
 
 # License
 
