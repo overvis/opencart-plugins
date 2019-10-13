@@ -28,7 +28,11 @@ class ControllerExtensionModuleNavigation extends Controller {
 
             $this->session->data['success'] = $this->language->get('text_success');
 
-            $this->response->redirect($this->url->link('marketplace/extension', $queryStringWithUserTokenAndType, true));
+            $this->response->redirect($this->url->link(
+                'marketplace/extension',
+                $queryStringWithUserTokenAndType,
+                true
+            ));
         }
 
         $errorsToData = [
@@ -59,15 +63,25 @@ class ControllerExtensionModuleNavigation extends Controller {
                 $queryStringWithUserTokenAndModuleId = http_build_query([
                     'user_token' => $this->session->data['user_token'],
                     'module_id' => $this->request->get['module_id'] ?? null
-                ]), true)
+                ]),
+                true
+            )
         ];
 
-        $data['action'] = $this->url->link('extension/module/navigation', $queryStringWithUserTokenAndModuleId, true);
+        $data['action'] = $this->url->link(
+            'extension/module/navigation',
+            $queryStringWithUserTokenAndModuleId,
+            true
+        );
 
-        $data['cancel'] = $this->url->link('marketplace/extension', $queryStringWithUserTokenAndType, true);
+        $data['cancel'] = $this->url->link(
+            'marketplace/extension',
+            $queryStringWithUserTokenAndType,
+            true
+        );
 
         if (isset($this->request->get['module_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-            $module_info = $this->model_setting_module->getModule($this->request->get['module_id']);
+            $moduleInfo = $this->model_setting_module->getModule($this->request->get['module_id']);
         }
 
         $forValidation = [
@@ -84,8 +98,8 @@ class ControllerExtensionModuleNavigation extends Controller {
         foreach ($forValidation as $value) {
             if (isset($this->request->post[$value['name']])) {
                 $data[$value['name']] = $this->request->post[$value['name']];
-            } elseif (!empty($module_info)) {
-                $data[$value['name']] = $module_info[$value['name']];
+            } elseif (!empty($moduleInfo)) {
+                $data[$value['name']] = $moduleInfo[$value['name']];
             } else {
                 $data[$value['name']] = $value['default'];
             }
@@ -103,7 +117,7 @@ class ControllerExtensionModuleNavigation extends Controller {
             $this->error['warning'] = $this->language->get('error_permission');
         }
 
-        if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 64)) {
+        if (($nameLength = utf8_strlen($this->request->post['name']) < 3) || ($nameLength > 64)) {
             $this->error['name'] = $this->language->get('error_name');
         }
 
