@@ -1,8 +1,8 @@
 <?php
 
-class ControllerExtensionModuleCookie extends Controller {
+class ControllerExtensionModuleCookieNotice extends Controller {
     public function index($setting) {
-        $this->load->language('extension/module/cookie');
+        $this->load->language('extension/module/cookie_notice');
 
         $data['cookie_consent'] = $this->request->cookie['cookie_consent'] ?? false;
 
@@ -12,6 +12,6 @@ class ControllerExtensionModuleCookie extends Controller {
             $data[$value] = $setting[$value];
         }
 
-        return $this->load->view('extension/module/cookie', $data);
+        return $this->load->view('extension/module/cookie_notice', $data);
     }
 }

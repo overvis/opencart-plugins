@@ -1,10 +1,10 @@
 <?php
 
-class ControllerExtensionModuleCookie extends Controller {
+class ControllerExtensionModuleCookieNotice extends Controller {
     private $error = [];
 
     public function index() {
-        $this->load->language('extension/module/cookie');
+        $this->load->language('extension/module/cookie_notice');
 
         $this->document->setTitle($this->language->get('heading_title'));
 
@@ -21,14 +21,18 @@ class ControllerExtensionModuleCookie extends Controller {
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
             if (!isset($this->request->get['module_id'])) {
-                $this->model_setting_module->addModule('cookie', $this->request->post);
+                $this->model_setting_module->addModule('cookie_notice', $this->request->post);
             } else {
                 $this->model_setting_module->editModule($this->request->get['module_id'], $this->request->post);
             }
 
             $this->session->data['success'] = $this->language->get('text_success');
 
-            $this->response->redirect($this->url->link('marketplace/extension', $queryStringWithUserTokenAndType, true));
+            $this->response->redirect($this->url->link(
+                'marketplace/extension',
+                $queryStringWithUserTokenAndType,
+                true
+            ));
         }
 
         $errorsToData = ['warning', 'name', 'block_color', 'text_color', 'button_color', 'button_color_on_hover'];
@@ -52,19 +56,29 @@ class ControllerExtensionModuleCookie extends Controller {
         $data['breadcrumbs'][] = [
             'text' => $this->language->get('heading_title'),
             'href' => $this->url->link(
-                'extension/module/cookie',
+                'extension/module/cookie_notice',
                 $queryStringWithUserTokenAndModuleId = http_build_query([
                     'user_token' => $this->session->data['user_token'],
                     'module_id' => $this->request->get['module_id'] ?? null
-                ]), true)
+                ]),
+                true
+            )
         ];
 
-        $data['action'] = $this->url->link('extension/module/cookie', $queryStringWithUserTokenAndModuleId, true);
+        $data['action'] = $this->url->link(
+            'extension/module/cookie_notice',
+            $queryStringWithUserTokenAndModuleId,
+            true
+        );
 
-        $data['cancel'] = $this->url->link('marketplace/extension', $queryStringWithUserTokenAndType, true);
+        $data['cancel'] = $this->url->link(
+            'marketplace/extension',
+            $queryStringWithUserTokenAndType,
+            true
+        );
 
         if (isset($this->request->get['module_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-            $module_info = $this->model_setting_module->getModule($this->request->get['module_id']);
+            $moduleInfo = $this->model_setting_module->getModule($this->request->get['module_id']);
         }
 
         $forValidation = [
@@ -79,8 +93,8 @@ class ControllerExtensionModuleCookie extends Controller {
         foreach ($forValidation as $value) {
             if (isset($this->request->post[$value['name']])) {
                 $data[$value['name']] = $this->request->post[$value['name']];
-            } elseif (!empty($module_info)) {
-                $data[$value['name']] = $module_info[$value['name']];
+            } elseif (!empty($moduleInfo)) {
+                $data[$value['name']] = $moduleInfo[$value['name']];
             } else {
                 $data[$value['name']] = $value['default'];
             }
@@ -90,15 +104,15 @@ class ControllerExtensionModuleCookie extends Controller {
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
 
-        $this->response->setOutput($this->load->view('extension/module/cookie', $data));
+        $this->response->setOutput($this->load->view('extension/module/cookie_notice', $data));
     }
 
     protected function validate() {
-        if (!$this->user->hasPermission('modify', 'extension/module/cookie')) {
+        if (!$this->user->hasPermission('modify', 'extension/module/cookie_notice')) {
             $this->error['warning'] = $this->language->get('error_permission');
         }
 
-        if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 64)) {
+        if (($nameLength = utf8_strlen($this->request->post['name']) < 3) || ($nameLength > 64)) {
             $this->error['name'] = $this->language->get('error_name');
         }
 
