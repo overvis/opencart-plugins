@@ -4,6 +4,7 @@
     <code>navigation</code>
     <version>3.x</version>
     <author>Garbuzov Alexandr</author>
+    <link>https://github.com/overvis/opencart-plugins/tree/master/Simple-navigation-bar</link>
 
     <file path="admin/controller/design/layout.php">
         <operation>
