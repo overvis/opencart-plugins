@@ -4,6 +4,7 @@
  * Script for automatic assembling of plugins into zip
  */
 
+$root = dirname(__FILE__);
 $excludeDirs = ['.git', '.idea'];
 $excludeFromZip = ['docs'];
 
@@ -28,7 +29,7 @@ $filter = function (
     return $file->isFile();
 };
 
-foreach (glob(dirname(__FILE__) . '/*', GLOB_ONLYDIR) as $dirPath) {
+foreach (glob($root . '/*', GLOB_ONLYDIR) as $dirPath) {
     $dirName = basename($dirPath);
 
     if (!in_array($dirName, $excludeDirs)) {
@@ -63,6 +64,8 @@ foreach (glob(dirname(__FILE__) . '/*', GLOB_ONLYDIR) as $dirPath) {
                 $zip->addFile($filePath, $relativePath);
             }
         }
+
+        $zip->addFile($licensePath = $root . '/LICENSE', 'LICENSE');
 
         $zip->close();
     }
