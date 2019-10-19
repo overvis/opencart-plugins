@@ -65,7 +65,7 @@ foreach (glob($root . '/*', GLOB_ONLYDIR) as $dirPath) {
             }
         }
 
-        $zip->addFile($licensePath = $root . '/LICENSE', 'LICENSE');
+        $zip->addFile($root . '/LICENSE', 'LICENSE');
 
         $zip->close();
     }
