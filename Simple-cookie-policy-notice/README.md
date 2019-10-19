@@ -1,8 +1,8 @@
-# OpenCart Simple cookie policy notice plugin
+# Simple cookie policy notice plugin for OpenCart
 
 ## Requirements
 
-* Opencart: 3.x
+* OpenCart: 3.x
 * PHP: >=7.0
 
 ## Description

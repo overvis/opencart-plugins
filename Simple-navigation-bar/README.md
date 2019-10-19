@@ -1,8 +1,8 @@
-# OpenCart Simple navigation bar plugin
+# Simple navigation bar plugin for OpenCart
 
 ## Requirements
 
-* Opencart: 3.x
+* OpenCart: 3.x
 * PHP: >=7.0
 
 ## Description

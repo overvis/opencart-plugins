@@ -2,7 +2,7 @@
 
 ## Requirements
 
-* Opencart: 3.x
+* OpenCart: 3.x
 * PHP: >=7.0
 
 ## Description
