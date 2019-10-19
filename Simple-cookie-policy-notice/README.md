@@ -17,6 +17,8 @@ The notice bar is adaptive and will look good on all devices. In the screenshot 
 
 ## Installation and configuration
 
+### Installation form admin panel
+
 1. Download Simple navigation bar plugin [zip](./Simple-cookie-policy-notice.ocmod.zip).
 
 2. Connect to OpenCart admin panel.
@@ -33,25 +35,59 @@ The notice bar is adaptive and will look good on all devices. In the screenshot 
     Extensions -> Extensions -> Modules -> Simple cookie policy notice -> Install
     ```
 
-5. Go to config page:
+5. Reload plugins cache (Blue button in the upper right corner):
+
+    ```
+    Extensions -> Modifications
+    ```
+
+### Installation by FTP
+
+1. Download Simple navigation bar plugin [zip](./Simple-cookie-policy-notice.ocmod.zip).
+
+2. Connect to server and go to OpenCart root directory.
+
+3. Open upload directory inside downloaded archive.
+
+4. Extract directories to OpenCart root directory.
+
+5. Install the plugin:
+
+    ```
+    Extensions -> Extensions -> Modules -> Simple cookie policy notice -> Install
+    ```
+
+5. Reload plugins cache (Blue button in the upper right corner):
+
+    ```
+    Extensions -> Modifications
+    ```
+
+### Configuration
+
+1. Go to config page:
 
     ```
     Extensions -> Extensions -> Modules -> Simple cookie policy notice -> Add new
     ```
 
-6. Change the settings as necessary or leave the default ones.
+2. Change the settings as necessary or leave the default ones.
 
-7. Save changes.
+3. Save changes.
 
-8. Find the layouts of the pages where you want to paste notice bar:
+4. Find the layouts of the pages where you want to paste notice bar:
 
     ```
     Design -> Layouts -> *Layout name* -> Edit
     ```
 
-9. Select the plugin in the drop-down list at the bottom of the **Content Top** section you need.
+5. Select the plugin in the drop-down list at the bottom of the **Content Top** section you need.
 
-10. Save changes.
+6. Save changes.
+
+## License
+
+[MIT](https://github.com/overvis/opencart-plugins/blob/master/LICENSE)
 
 ## Support
 

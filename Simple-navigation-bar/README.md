@@ -35,25 +35,31 @@ The navigation bar is adaptive and will look good on all devices. In the screens
     Extensions -> Extensions -> Modules -> Simple navigation bar -> Install
     ```
 
-5. Go to config page:
+5. Reload plugins cache (Blue button in the upper right corner):
+
+    ```
+    Extensions -> Modifications
+    ```
+
+6. Go to config page:
 
     ```
     Extensions -> Extensions -> Modules -> Simple navigation bar -> Add new
     ```
 
-6. Change the settings as necessary or leave the default ones.
+7. Change the settings as necessary or leave the default ones.
 
-7. Save changes.
+8. Save changes.
 
-8. Find the layout of the page where you want to paste navigation bar:
+9. Find the layout of the page where you want to paste navigation bar:
 
     ```
     Design -> Layouts -> *Layout name* -> Edit
     ```
 
-9. Select the plugin in the drop-down list at the top of the section you need.
+10. Select the plugin in the drop-down list at the top of the section you need.
 
-10. Save changes.
+11. Save changes.
 
 ## How to select pages to display in the navigation
 
@@ -66,6 +72,10 @@ The navigation bar is adaptive and will look good on all devices. In the screens
 2. Switch the option **Show in navbar** to **Yes**.
 
 3. Save changes.
+
+## License
+
+[MIT](https://github.com/overvis/opencart-plugins/blob/master/LICENSE)
 
 ## Support
 

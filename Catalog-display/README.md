@@ -1,4 +1,4 @@
-# OpenCart Catalog display plugin
+# Catalog display plugin for OpenCart
 
 ## Requirements
 
@@ -29,21 +29,27 @@ This plugin provides you an ability to display a catalog of selected products on
     Extensions -> Extensions Installer -> Upload
     ```
 
-4. Install the plugin:
+4. Reload plugins cache (Blue button in the upper right corner):
+
+    ```
+    Extensions -> Modifications
+    ```
+
+5. Install the plugin:
 
     ```
     Extensions -> Extensions -> Modules -> Catalog display -> Install
     ```
 
-8. Find the layout of the page where you want to paste catalog:
+6. Find the layout of the page where you want to paste catalog:
 
     ```
     Design -> Layouts -> *Layout name* -> Edit
     ```
 
-9. Select the plugin in the drop-down list of the section you need.
+7. Select the plugin in the drop-down list of the section you need.
 
-10. Save changes.
+8. Save changes.
 
 ## How to add products to catalog
 
@@ -58,6 +64,10 @@ This plugin provides you an ability to display a catalog of selected products on
 3. Switch option **Show in catalog** to **Yes**.
 
 4. Save changes.
+
+## License
+
+[MIT](https://github.com/overvis/opencart-plugins/blob/master/LICENSE)
 
 ## Support
 
