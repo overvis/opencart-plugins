@@ -29,16 +29,16 @@ This plugin provides you an ability to display a catalog of selected products on
     Extensions -> Extensions Installer -> Upload
     ```
 
-4. Reload plugins cache (Blue button in the upper right corner):
-
-    ```
-    Extensions -> Modifications
-    ```
-
-5. Install the plugin:
+4. Install the plugin:
 
     ```
     Extensions -> Extensions -> Modules -> Catalog display -> Install
+    ```
+
+5. Reload plugins cache (Blue button in the upper right corner):
+
+    ```
+    Extensions -> Modifications
     ```
 
 6. Find the layout of the page where you want to paste catalog:
