@@ -14,7 +14,7 @@
             font-size: 22px;
             z-index: 1;
         }
-        .cookie_notice_block > p {margin: 0;}
+        .cookie_notice_block > p { margin: 0; }
         .cookie_notice_block > button {
             background-color: transparent;
             background-repeat: no-repeat;
@@ -44,16 +44,14 @@
     <script>
         $(document).ready(function() {
             $('.cookie_notice_block > button').click(function() {
-                var cookieString = '';
-                var cookieProperties = {
-                    cookie_consent: 1,
-                    path: '/',
-                    'max-age': 60 * 60 * 24 * 360
-                };
+                var currentDate = new Date();
+                var expires = new Date(
+                    currentDate.getFullYear() + 1,
+                    currentDate.getMonth(),
+                    currentDate.getDay()
+                ).toString();
 
-                for (var property in cookieProperties) {
-                    cookieString += encodeURIComponent(property) + '=' + encodeURIComponent(cookieProperties[property]) + '; ';
-                }
+                var cookieString = 'cookie_consent=1; expires=' + expires + '; path=/';
 
                 document.cookie = cookieString;
                 $(this).parent().remove();

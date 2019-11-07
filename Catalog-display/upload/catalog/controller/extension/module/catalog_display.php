@@ -10,7 +10,7 @@ class ControllerExtensionModuleCatalogDisplay extends Controller {
 
         $data = [];
 
-        $categories = $this->model_extension_module_catalog_display->getCategoriesForMainPage();
+        $categories = $this->model_extension_module_catalog_display->getCategoriesForCatalog();
 
         foreach ($categories as $category) {
             $category['description'] = $this->decodeDescription($category['description'], null);
@@ -21,7 +21,7 @@ class ControllerExtensionModuleCatalogDisplay extends Controller {
             $data['categories'][] = $category;
         }
 
-        $products = $this->model_extension_module_catalog_display->getProductsForMainPage();
+        $products = $this->model_extension_module_catalog_display->getProductsForCatalog();
 
         foreach ($products as $product) {
             $productInfo = $this->model_catalog_product->getProduct($product['id']);

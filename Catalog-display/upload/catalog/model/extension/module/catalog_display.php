@@ -1,7 +1,7 @@
 <?php
 
 class ModelExtensionModuleCatalogDisplay extends Model {
-    public function getProductsForMainPage() {
+    public function getProductsForCatalog() {
         $sql = 'SELECT d.product_id AS id, '
                 . 'c.category_id AS category_id, '
                 . 'p.sort_order AS sort_order '
@@ -19,7 +19,7 @@ class ModelExtensionModuleCatalogDisplay extends Model {
         return $result->rows;
     }
 
-    public function getCategoriesForMainPage() {
+    public function getCategoriesForCatalog() {
         $sql = 'SELECT d.category_id AS id, '
                 . 'd.name AS name, '
                 . 'd.description AS description, '

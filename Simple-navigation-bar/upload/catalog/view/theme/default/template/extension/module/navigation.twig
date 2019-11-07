@@ -1,5 +1,5 @@
 <style>
-    .navbar {margin-top: 30px;}
+    .navbar { margin-top: 30px; }
     .navbar-default {
         background-color: {{ menu_color }};
         border-color: {{ menu_border_color }};
@@ -13,16 +13,16 @@
         display: flex;
         align-items: center;
     }
-    .navbar .dropdown-menu {background-color: {{ dropdown_menu_color }};}
-    .navbar a {font-size: 16px;}
+    .navbar .dropdown-menu { background-color: {{ dropdown_menu_color }}; }
+    .navbar a { font-size: 16px; }
     @media only screen and (min-width: 767px) {
-        .navbar li:hover {background-color: {{ button_color_on_hover }};}
-        .navbar-collapse {padding-left: 0;}
-        .navbar-right {height: 52px;}
-        .navbar-right li {height: 100%;}
+        .navbar li:hover { background-color: {{ button_color_on_hover }}; }
+        .navbar-collapse { padding-left: 0; }
+        .navbar-right { height: 52px; }
+        .navbar-right li { height: 100%; }
     }
     @media only screen and (max-width: 767px) {
-        .navbar .dropdown .{{ icon_fa_class }} {display: none;}
+        .navbar .dropdown .{{ icon_fa_class }} { display: none; }
     }
 </style>
 
@@ -57,9 +57,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         {% for category in categories %}
-                            <li>
-                                <a href="{{ category.href }}">{{ category.name }}</a>
-                            </li>
+                            <li><a href="{{ category.href }}">{{ category.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
