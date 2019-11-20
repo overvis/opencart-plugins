@@ -7,15 +7,15 @@
 
 ## Description
 
-This plugin provides you an ability to display a catalog of selected products on any page. Blocks with categories in which there is at least one product selected for display will be shown on the selected page. The order of displaying categories can be changed in the admin panel. These blocks will include:
+This plugin provides a module that displays a catalog of products by categories. The order of displaying categories can be changed in the admin panel. Categories include:
 
-* The name of the category, which in combination will be a link to other products from this category
+* The name of the category, with a link to other products from this category.
 
-* Category description
+* Category description.
 
-* Blocks of products whose output order can also be configured in the admin panel
+* List of products. Output order can be configured in the admin panel.
 
-**Important!** If a product has several categories, it can be displayed several times.
+**Important!** If a product is assigned to several categories, it may be displayed several times.
 
 ## Installation and configuration
 
@@ -35,13 +35,13 @@ This plugin provides you an ability to display a catalog of selected products on
     Extensions -> Extensions -> Modules -> Catalog display -> Install
     ```
 
-5. Reload plugins cache (Blue button in the upper right corner):
+5. Reload plugins cache (blue button in the upper right corner):
 
     ```
     Extensions -> Modifications
     ```
 
-6. Find the layout of the page where you want to paste catalog:
+6. Find the layout of the page where you want display the catalog:
 
     ```
     Design -> Layouts -> *Layout name* -> Edit
