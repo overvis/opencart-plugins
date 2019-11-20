@@ -7,9 +7,9 @@
 
 ## Description
 
-This plugin adds a notice about using cookies to your OpenCart store. It supports a large number of settings for visual customization, so it’s easy to adjust the navigation bar to the color scheme of your site.
+This plugin adds a notice about cookies usage for visitors on OpenCart store. It supports a large number of settings for visual customization, so it should be easy to adjust it to store color scheme.
 
-The notice bar is adaptive and will look good on all devices. In the screenshot below you can see the appearance of the desktop and mobile version of notice bar.
+The notice bar is adaptive and should fit mobile devices nicely. Screenshot of desktop and mobile versions:
 
 ![Desktop version](./docs/img/desktop.jpg)
 
@@ -35,7 +35,7 @@ The notice bar is adaptive and will look good on all devices. In the screenshot 
     Extensions -> Extensions -> Modules -> Simple cookie policy notice -> Install
     ```
 
-5. Reload plugins cache (Blue button in the upper right corner):
+5. Reload plugins cache (blue button in the upper right corner):
 
     ```
     Extensions -> Modifications
@@ -57,7 +57,7 @@ The notice bar is adaptive and will look good on all devices. In the screenshot 
     Extensions -> Extensions -> Modules -> Simple cookie policy notice -> Install
     ```
 
-5. Reload plugins cache (Blue button in the upper right corner):
+5. Reload plugins cache (blue button in the upper right corner):
 
     ```
     Extensions -> Modifications
