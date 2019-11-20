@@ -1,4 +1,4 @@
-# Insert html plugin for OpenCart
+# HTML module plugin for OpenCart
 
 ## Requirements
 
@@ -7,7 +7,7 @@
 
 ## Description
 
-This plugin provides you an ability to insert HTML code on any page.
+This plugin allows to insert an arbitrary HTML code on any page.
 
 ## Installation and configuration
 
@@ -29,7 +29,7 @@ This plugin provides you an ability to insert HTML code on any page.
     Extensions -> Extensions -> Modules -> Insert html -> Install
     ```
 
-5. Reload plugins cache (Blue button in the upper right corner):
+5. Reload plugins cache (blue button in the upper right corner):
 
     ```
     Extensions -> Modifications
@@ -51,7 +51,7 @@ This plugin provides you an ability to insert HTML code on any page.
     Extensions -> Extensions -> Modules -> Insert html -> Install
     ```
 
-5. Reload plugins cache (Blue button in the upper right corner):
+5. Reload plugins cache (blue button in the upper right corner):
 
     ```
     Extensions -> Modifications
