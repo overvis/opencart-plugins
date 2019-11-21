@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<modification>
-    <name>Insert html module</name>
-    <code>insert_html</code>
-    <version>3.x</version>
-    <author>Garbuzov Alexandr</author>
-    <link>https://github.com/overvis/opencart-plugins/tree/master/Insert-html</link>
-</modification>

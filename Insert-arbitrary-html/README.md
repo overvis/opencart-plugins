@@ -1,4 +1,4 @@
-# HTML module plugin for OpenCart
+# Insert arbitrary html plugin for OpenCart
 
 ## Requirements
 
@@ -13,7 +13,7 @@ This plugin allows to insert an arbitrary HTML code on any page.
 
 ### Installation form admin panel
 
-1. Download Insert html plugin [zip](./Insert-html.ocmod.zip).
+1. Download Insert arbitrary html plugin [zip](./Insert-arbitrary-html.ocmod.zip).
 
 2. Connect to OpenCart admin panel.
 
@@ -26,7 +26,7 @@ This plugin allows to insert an arbitrary HTML code on any page.
 4. Install the plugin:
 
     ```
-    Extensions -> Extensions -> Modules -> Insert html -> Install
+    Extensions -> Extensions -> Modules -> Insert arbitrary html -> Install
     ```
 
 5. Reload plugins cache (blue button in the upper right corner):
@@ -37,7 +37,7 @@ This plugin allows to insert an arbitrary HTML code on any page.
 
 ### Installation by FTP
 
-1. Download Insert html plugin [zip](./Insert-html.ocmod.zip).
+1. Download Insert arbitrary html plugin [zip](./Insert-arbitrary-html.ocmod.zip).
 
 2. Connect to server and go to OpenCart root directory.
 
@@ -48,7 +48,7 @@ This plugin allows to insert an arbitrary HTML code on any page.
 5. Install the plugin:
 
     ```
-    Extensions -> Extensions -> Modules -> Insert html -> Install
+    Extensions -> Extensions -> Modules -> Insert arbitrary html -> Install
     ```
 
 5. Reload plugins cache (blue button in the upper right corner):
@@ -62,7 +62,7 @@ This plugin allows to insert an arbitrary HTML code on any page.
 1. Go to config page:
 
     ```
-    Extensions -> Extensions -> Modules -> Insert html -> Add new
+    Extensions -> Extensions -> Modules -> Insert arbitrary html -> Add new
     ```
 
 2. Paster your HTML in text area.
