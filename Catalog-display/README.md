@@ -1,5 +1,7 @@
 # Catalog display plugin for OpenCart
 
+[View on OpenCart marketplace](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=37990)
+
 ## Requirements
 
 * OpenCart: 3.x

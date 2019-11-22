@@ -1,5 +1,7 @@
 # Simple navigation bar plugin for OpenCart
 
+[View on OpenCart marketplace](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=37992)
+
 ## Requirements
 
 * OpenCart: 3.x
