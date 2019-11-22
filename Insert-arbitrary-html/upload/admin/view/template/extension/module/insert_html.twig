@@ -74,13 +74,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-html">{{ entry_html }}</label>
                         <div class="col-sm-10">
-                            <textarea name="html"
-                                      rows="5"
-                                      placeholder="{{ entry_html }}"
-                                      id="input-html"
-                                      class="form-control">
-                                {{ html }}
-                            </textarea>
+                            <textarea name="html" rows="10" id="input-html">{{ html }}</textarea>
                             {% if error_html %}
                                 <div class="text-danger">{{ error_html }}</div>
                             {% endif %}
@@ -91,4 +85,19 @@
         </div>
     </div>
 </div>
+<link href="view/javascript/codemirror/lib/codemirror.css" rel="stylesheet" />
+<link href="view/javascript/codemirror/theme/monokai.css" rel="stylesheet" />
+<script type="text/javascript" src="view/javascript/codemirror/lib/codemirror.js"></script>
+<script type="text/javascript" src="view/javascript/codemirror/lib/xml.js"></script>
+<script type="text/javascript" src="view/javascript/codemirror/lib/formatting.js"></script>
+<script type="text/javascript"><!--
+    var codemirror = CodeMirror.fromTextArea(document.querySelector('#input-html'), {
+        mode: 'text/html',
+        height: '500px',
+        lineNumbers: true,
+        autofocus: true,
+        theme: 'monokai'
+    });
+    codemirror.save();
+--></script>
 {{ footer }}
