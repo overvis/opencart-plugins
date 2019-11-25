@@ -11,6 +11,8 @@
 
 This plugin allows to insert an arbitrary HTML code on any page.
 
+![ScreenShot](./docs/img/screenshot.jpg)
+
 ## Installation and configuration
 
 ### Installation form admin panel

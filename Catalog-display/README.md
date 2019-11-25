@@ -19,6 +19,8 @@ This plugin provides a module that displays a catalog of products by categories.
 
 **Important!** If a product is assigned to several categories, it may be displayed several times.
 
+![ScreenShot](./docs/img/screenshot.jpg)
+
 ## Installation and configuration
 
 1. Download Catalog display plugin [zip](./Catalog-display.ocmod.zip).
