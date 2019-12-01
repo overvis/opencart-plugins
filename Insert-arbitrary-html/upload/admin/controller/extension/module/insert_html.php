@@ -10,10 +10,6 @@ class ControllerExtensionModuleInsertHtml extends Controller {
 
         $this->load->model('setting/module');
 
-        $queryStringWithUserToken = http_build_query([
-            'user_token' => $this->session->data['user_token']
-        ]);
-
         $queryStringWithUserTokenAndType = http_build_query([
             'user_token' => $this->session->data['user_token'],
             'type' => 'module'
@@ -40,6 +36,10 @@ class ControllerExtensionModuleInsertHtml extends Controller {
         foreach ($errorsToData as $value) {
             $data["error_$value"] = isset($this->error[$value]) ? $this->error[$value] : '';
         }
+
+        $queryStringWithUserToken = http_build_query([
+            'user_token' => $this->session->data['user_token']
+        ]);
 
         $data['breadcrumbs'] = [];
 
@@ -97,11 +97,24 @@ class ControllerExtensionModuleInsertHtml extends Controller {
             }
         }
 
+        $data['current_theme'] = $this->request->cookie['current_theme'] ?? 'monokai';
+        $data['themes'] = $this->getCodeMirrorThemes();
+
         $data['header'] = $this->load->controller('common/header');
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
 
         $this->response->setOutput($this->load->view('extension/module/insert_html', $data));
+    }
+
+    private function getCodeMirrorThemes() {
+        $themes = [];
+
+        foreach (glob(DIR_APPLICATION . 'view/javascript/codemirror/theme/*.css') as $file) {
+            array_push($themes, basename($file, '.css'));
+        }
+
+        return $themes;
     }
 
     protected function validate() {

@@ -12,6 +12,7 @@ $_['text_edit']        = 'Edit Insert arbitrary html module';
 $_['entry_status']     = 'Status';
 $_['entry_name']       = 'Module Name';
 $_['entry_html']       = 'Html';
+$_['entry_theme']      = 'Editor theme';
 
 // Error
 $_['error_permission'] = 'Warning: You do not have permission to modify Insert arbitrary html module!';
