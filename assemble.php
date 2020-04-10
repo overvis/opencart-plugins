@@ -43,6 +43,7 @@ foreach (glob($root . '/*', GLOB_ONLYDIR) as $dirPath) {
         if (file_exists($zipName)) unlink($zipName);
 
         $zip->open($zipName, ZipArchive::CREATE);
+        $zip->setArchiveComment(sprintf('%s module', $dirName));
 
         $innerIterator = new RecursiveDirectoryIterator(
             $dirPath,
@@ -57,11 +58,23 @@ foreach (glob($root . '/*', GLOB_ONLYDIR) as $dirPath) {
         );
 
         foreach ($filesToZip as $file) {
-            if (!is_dir($file)) {
-                $filePath = realpath($file);
-                $relativePath = substr($filePath, strlen($dirPath) + 1);
+//            if (!is_dir($file)) {
+//                $filePath = realpath($file);
+//                $relativePath = substr($filePath, strlen($dirPath) + 1);
+//
+//                $zip->addFile($filePath, $relativePath);
+//            }
+            $filePath = realpath($file);
 
-                $zip->addFile($filePath, $relativePath);
+            switch (is_dir($file)) {
+                case false:
+                    $relativePath = substr($filePath, strlen($dirPath) + 1);
+                    $zip->addFile($filePath, $relativePath);
+                    break;
+
+                case true:
+                    $zip->addEmptyDir($filePath);
+                    break;
             }
         }
 
