@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Script for automatic assembling of plugins into zip
+ * Script for automatic assembling of plugins into zip.
  */
 
 $root = dirname(__FILE__);
@@ -9,6 +9,9 @@ $excludeDirs = ['.git', '.github', '.idea'];
 $excludeFromZip = ['docs'];
 
 /**
+ * This filter excludes from the selection the folder with
+ * the name added to array '$excludeFromZip' and their contents.
+ *
  * @param SplFileInfo $file
  * @param string $key
  * @param RecursiveDirectoryIterator $iterator
@@ -22,11 +25,11 @@ $filter = function (
 ) use ($excludeFromZip): bool {
     if (
         $iterator->hasChildren()
-        && !in_array($file->getFilename(), $excludeFromZip)
+        && in_array($file->getFilename(), $excludeFromZip)
     ) {
-        return true;
+        return false;
     }
-    return $file->isFile();
+    return true;
 };
 
 foreach (glob($root . '/*', GLOB_ONLYDIR) as $dirPath) {
@@ -43,7 +46,7 @@ foreach (glob($root . '/*', GLOB_ONLYDIR) as $dirPath) {
         if (file_exists($zipName)) unlink($zipName);
 
         $zip->open($zipName, ZipArchive::CREATE);
-        $zip->setArchiveComment(sprintf('%s module', $dirName));
+        $zip->setArchiveComment("$dirName plugin") || die("Could not set archive comment");
 
         $innerIterator = new RecursiveDirectoryIterator(
             $dirPath,
@@ -54,32 +57,28 @@ foreach (glob($root . '/*', GLOB_ONLYDIR) as $dirPath) {
             new RecursiveCallbackFilterIterator(
                 $innerIterator,
                 $filter
-            )
+            ),
+            RecursiveIteratorIterator::SELF_FIRST
         );
 
-        foreach ($filesToZip as $file) {
-//            if (!is_dir($file)) {
-//                $filePath = realpath($file);
-//                $relativePath = substr($filePath, strlen($dirPath) + 1);
-//
-//                $zip->addFile($filePath, $relativePath);
-//            }
-            $filePath = realpath($file);
+        foreach ($filesToZip as $path => $file) {
+            $relativePath = substr($path, strlen($dirPath) + 1);
 
             switch (is_dir($file)) {
                 case false:
-                    $relativePath = substr($filePath, strlen($dirPath) + 1);
-                    $zip->addFile($filePath, $relativePath);
+                    $zip->addFile($path, $relativePath)
+                    || die("Could not add file '$path' to archive");
                     break;
 
                 case true:
-                    $zip->addEmptyDir($filePath);
+                    $zip->addEmptyDir($relativePath)
+                    || die("Could not create empty folder '$relativePath' inside archive");
                     break;
             }
         }
 
-        $zip->addFile($root . '/LICENSE', 'LICENSE');
-
+        $zip->addFile($root . '/LICENSE', 'LICENSE')
+        || die("Could not add plugin license to archive");
         $zip->close();
     }
 }
