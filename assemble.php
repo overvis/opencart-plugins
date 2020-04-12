@@ -9,8 +9,9 @@ $excludeDirs = ['.git', '.github', '.idea'];
 $excludeFromZip = ['docs'];
 
 /**
- * This filter excludes from the selection the folder with
- * the name added to array '$excludeFromZip' and their contents.
+ * This filter excludes from the selection zip-archives and the
+ * folders with the name added to array '$excludeFromZip' and
+ * contents inside them.
  *
  * @param SplFileInfo $file
  * @param string $key
@@ -26,6 +27,7 @@ $filter = function (
     if (
         $iterator->hasChildren()
         && in_array($file->getFilename(), $excludeFromZip)
+        || $file->getExtension() === 'zip'
     ) {
         return false;
     }
@@ -43,10 +45,10 @@ foreach (glob($root . '/*', GLOB_ONLYDIR) as $dirPath) {
             $dirName
         );
 
-        if (file_exists($zipName)) unlink($zipName);
-
-        $zip->open($zipName, ZipArchive::CREATE);
-        $zip->setArchiveComment("$dirName plugin") || die("Could not set archive comment");
+        $zip->open($zipName, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true
+        || die("Could not create/overwrite archive '$zipName'");
+        $zip->setArchiveComment("$dirName plugin")
+        || die("Could not set comment to archive '$zipName'");
 
         $innerIterator = new RecursiveDirectoryIterator(
             $dirPath,
@@ -63,22 +65,24 @@ foreach (glob($root . '/*', GLOB_ONLYDIR) as $dirPath) {
 
         foreach ($filesToZip as $path => $file) {
             $relativePath = substr($path, strlen($dirPath) + 1);
+            $relativePathUnixStyle = str_replace('\\', '/', $relativePath);
 
             switch (is_dir($file)) {
                 case false:
-                    $zip->addFile($path, $relativePath)
-                    || die("Could not add file '$path' to archive");
+                    $zip->addFile($path, $relativePathUnixStyle)
+                    || die("Could not add file '$path' to archive '$zipName'");
                     break;
 
                 case true:
-                    $zip->addEmptyDir($relativePath)
-                    || die("Could not create empty folder '$relativePath' inside archive");
+                    $zip->addEmptyDir($relativePathUnixStyle)
+                    || die("Could not create empty folder '$relativePathUnixStyle' inside archive '$zipName'");
                     break;
             }
         }
 
         $zip->addFile($root . '/LICENSE', 'LICENSE')
-        || die("Could not add plugin license to archive");
-        $zip->close();
+        || die("Could not add plugin license to archive '$zipName'");
+        $zip->close()
+        || die("Failure occurred while trying to write archive '$zipName'");
     }
 }
