@@ -126,9 +126,7 @@
 
         codemirror.setOption('theme', current_theme);
 
-        var cookieString = 'current_theme=' + current_theme + '; expires=' + expires + '; path=/';
-
-        document.cookie = cookieString;
+        document.cookie = 'current_theme=' + current_theme + '; expires=' + expires + '; path=/';
     });
 </script>
 {{ footer }}

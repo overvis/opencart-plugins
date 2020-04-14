@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection SqlNoDataSourceInspection */
 
 class ControllerExtensionModuleCatalogDisplay extends Controller {
     private $error = [];
@@ -9,10 +9,6 @@ class ControllerExtensionModuleCatalogDisplay extends Controller {
         $this->document->setTitle($this->language->get('heading_title'));
 
         $this->load->model('setting/setting');
-
-        $queryStringWithUserToken = http_build_query([
-            'user_token' => $this->session->data['user_token']
-        ]);
 
         $queryStringWithUserTokenAndType = http_build_query([
             'user_token' => $this->session->data['user_token'],
@@ -31,13 +27,19 @@ class ControllerExtensionModuleCatalogDisplay extends Controller {
             ));
         }
 
-        $data['error_warning'] = isset($this->error['warning']) ? $this->error['warning'] : '';
+        $data['error_warning'] = !empty($this->error['warning']) ? $this->error['warning'] : '';
 
         $data['breadcrumbs'] = [];
 
         $data['breadcrumbs'][] = [
             'text' => $this->language->get('text_home'),
-            'href' => $this->url->link('common/dashboard', $queryStringWithUserToken, true)
+            'href' => $this->url->link(
+                'common/dashboard',
+                $queryStringWithUserToken = http_build_query([
+                    'user_token' => $this->session->data['user_token']
+                ]),
+                true
+            )
         ];
 
         $data['breadcrumbs'][] = [
@@ -54,7 +56,7 @@ class ControllerExtensionModuleCatalogDisplay extends Controller {
 
         $data['cancel'] = $this->url->link('marketplace/extension', $queryStringWithUserTokenAndType, true);
 
-        $data['module_catalog_display_status'] = isset($this->request->post['module_catalog_display_status'])
+        $data['module_catalog_display_status'] = !empty($this->request->post['module_catalog_display_status'])
             ? $this->request->post['module_catalog_display_status']
             : $this->config->get('module_catalog_display_status');
 
@@ -88,6 +90,7 @@ class ControllerExtensionModuleCatalogDisplay extends Controller {
         $this->model_setting_setting->deleteSetting('module_catalog_display');
 
         $this->db->query("SET GLOBAL SQL_MODE = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'");
+        /** @noinspection SqlResolve */
         $this->db->query('ALTER TABLE ' . DB_PREFIX . 'product DROP show_in_catalog');
     }
 }

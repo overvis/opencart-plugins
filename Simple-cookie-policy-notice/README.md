@@ -4,8 +4,10 @@
 
 ## Requirements
 
-* OpenCart: 3.x
+* OpenCart: 3.0.3.2
 * PHP: >=7.0
+
+If you succeed to use this plugin on another versions of OpenCart or PHP let me know.
 
 ## Description
 

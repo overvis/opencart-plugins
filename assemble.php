@@ -39,6 +39,7 @@ foreach (glob($root . '/*', GLOB_ONLYDIR) as $dirPath) {
 
     if (!in_array($dirName, $excludeDirs)) {
         $zip = new ZipArchive();
+        /** @noinspection SpellCheckingInspection */
         $zipName = sprintf(
             '%s/%s.ocmod.zip',
             $dirPath,

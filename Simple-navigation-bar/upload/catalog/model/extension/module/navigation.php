@@ -1,6 +1,7 @@
 <?php
 
 class ModelExtensionModuleNavigation extends Model {
+    /** @noinspection SpellCheckingInspection */
     public function getLayoutsForNavbar() {
         $sql = 'SELECT l.name AS name, '
             . 'r.route AS route '

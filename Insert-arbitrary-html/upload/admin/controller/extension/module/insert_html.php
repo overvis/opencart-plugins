@@ -3,6 +3,7 @@
 class ControllerExtensionModuleInsertHtml extends Controller {
     private $error = [];
 
+    /** @noinspection DuplicatedCode */
     public function index() {
         $this->load->language('extension/module/insert_html');
 
@@ -16,7 +17,7 @@ class ControllerExtensionModuleInsertHtml extends Controller {
         ]);
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-            if (!isset($this->request->get['module_id'])) {
+            if (empty($this->request->get['module_id'])) {
                 $this->model_setting_module->addModule('insert_html', $this->request->post);
             } else {
                 $this->model_setting_module->editModule($this->request->get['module_id'], $this->request->post);
@@ -34,18 +35,20 @@ class ControllerExtensionModuleInsertHtml extends Controller {
         $errorsToData = ['warning', 'name', 'html'];
 
         foreach ($errorsToData as $value) {
-            $data["error_$value"] = isset($this->error[$value]) ? $this->error[$value] : '';
+            $data["error_$value"] = !empty($this->error[$value]) ? $this->error[$value] : '';
         }
-
-        $queryStringWithUserToken = http_build_query([
-            'user_token' => $this->session->data['user_token']
-        ]);
 
         $data['breadcrumbs'] = [];
 
         $data['breadcrumbs'][] = [
             'text' => $this->language->get('text_home'),
-            'href' => $this->url->link('common/dashboard', $queryStringWithUserToken, true)
+            'href' => $this->url->link(
+                'common/dashboard',
+                http_build_query([
+                    'user_token' => $this->session->data['user_token']
+                ]),
+                true
+            )
         ];
 
         $data['breadcrumbs'][] = [
@@ -59,7 +62,9 @@ class ControllerExtensionModuleInsertHtml extends Controller {
                 'extension/module/insert_html',
                 $queryStringWithUserTokenAndModuleId = http_build_query([
                     'user_token' => $this->session->data['user_token'],
-                    'module_id' => $this->request->get['module_id'] ?? null
+                    'module_id' => !empty($this->request->get['module_id'])
+                        ? $this->request->get['module_id']
+                        : null
                 ]),
                 true
             )
@@ -77,7 +82,7 @@ class ControllerExtensionModuleInsertHtml extends Controller {
             true
         );
 
-        if (isset($this->request->get['module_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+        if (!empty($this->request->get['module_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
             $moduleInfo = $this->model_setting_module->getModule($this->request->get['module_id']);
         }
 
@@ -87,8 +92,9 @@ class ControllerExtensionModuleInsertHtml extends Controller {
             ['name' => 'html', 'default' => '']
         ];
 
+        /** @noinspection DuplicatedCode */
         foreach ($forValidation as $value) {
-            if (isset($this->request->post[$value['name']])) {
+            if (!empty($this->request->post[$value['name']])) {
                 $data[$value['name']] = $this->request->post[$value['name']];
             } elseif (!empty($moduleInfo)) {
                 $data[$value['name']] = $moduleInfo[$value['name']];
@@ -97,7 +103,10 @@ class ControllerExtensionModuleInsertHtml extends Controller {
             }
         }
 
-        $data['current_theme'] = $this->request->cookie['current_theme'] ?? 'monokai';
+        /** @noinspection SpellCheckingInspection */
+        $data['current_theme'] = !empty($this->request->cookie['current_theme'])
+            ? $this->request->cookie['current_theme']
+            : 'monokai';
         $data['themes'] = $this->getCodeMirrorThemes();
 
         $data['header'] = $this->load->controller('common/header');

@@ -1,8 +1,9 @@
-<?php
+<?php /** @noinspection SqlNoDataSourceInspection */
 
 class ControllerExtensionModuleNavigation extends Controller {
     private $error = [];
 
+    /** @noinspection DuplicatedCode */
     public function index() {
         $this->load->language('extension/module/navigation');
 
@@ -10,17 +11,13 @@ class ControllerExtensionModuleNavigation extends Controller {
 
         $this->load->model('setting/module');
 
-        $queryStringWithUserToken = http_build_query([
-            'user_token' => $this->session->data['user_token']
-        ]);
-
         $queryStringWithUserTokenAndType = http_build_query([
             'user_token' => $this->session->data['user_token'],
             'type' => 'module'
         ]);
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-            if (!isset($this->request->get['module_id'])) {
+            if (empty($this->request->get['module_id'])) {
                 $this->model_setting_module->addModule('navigation', $this->request->post);
             } else {
                 $this->model_setting_module->editModule($this->request->get['module_id'], $this->request->post);
@@ -41,14 +38,20 @@ class ControllerExtensionModuleNavigation extends Controller {
         ];
 
         foreach ($errorsToData as $value) {
-            $data["error_$value"] = isset($this->error[$value]) ? $this->error[$value] : '';
+            $data["error_$value"] = !empty($this->error[$value]) ? $this->error[$value] : '';
         }
 
         $data['breadcrumbs'] = [];
 
         $data['breadcrumbs'][] = [
             'text' => $this->language->get('text_home'),
-            'href' => $this->url->link('common/dashboard', $queryStringWithUserToken, true)
+            'href' => $this->url->link(
+                'common/dashboard',
+                http_build_query([
+                    'user_token' => $this->session->data['user_token']
+                ]),
+                true
+            )
         ];
 
         $data['breadcrumbs'][] = [
@@ -62,7 +65,9 @@ class ControllerExtensionModuleNavigation extends Controller {
                 'extension/module/navigation',
                 $queryStringWithUserTokenAndModuleId = http_build_query([
                     'user_token' => $this->session->data['user_token'],
-                    'module_id' => $this->request->get['module_id'] ?? null
+                    'module_id' => !empty($this->request->get['module_id'])
+                        ? $this->request->get['module_id']
+                        : null
                 ]),
                 true
             )
@@ -80,7 +85,7 @@ class ControllerExtensionModuleNavigation extends Controller {
             true
         );
 
-        if (isset($this->request->get['module_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+        if (!empty($this->request->get['module_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
             $moduleInfo = $this->model_setting_module->getModule($this->request->get['module_id']);
         }
 
@@ -96,7 +101,7 @@ class ControllerExtensionModuleNavigation extends Controller {
         ];
 
         foreach ($forValidation as $value) {
-            if (isset($this->request->post[$value['name']])) {
+            if (!empty($this->request->post[$value['name']])) {
                 $data[$value['name']] = $this->request->post[$value['name']];
             } elseif (!empty($moduleInfo)) {
                 $data[$value['name']] = $moduleInfo[$value['name']];
@@ -136,11 +141,13 @@ class ControllerExtensionModuleNavigation extends Controller {
     }
 
     public function install() {
+        /** @noinspection SpellCheckingInspection */
         $this->db->query('ALTER TABLE ' . DB_PREFIX . 'layout ADD show_in_navbar int(1) DEFAULT 0');
     }
 
     public function uninstall() {
         $this->db->query("SET GLOBAL SQL_MODE = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'");
+        /** @noinspection SqlResolve, SpellCheckingInspection */
         $this->db->query('ALTER TABLE ' . DB_PREFIX . 'layout DROP show_in_navbar');
     }
 }

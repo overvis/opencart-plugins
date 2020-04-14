@@ -4,8 +4,10 @@
 
 ## Requirements
 
-* OpenCart: 3.x
+* OpenCart: 3.0.3.2
 * PHP: >=7.0
+
+If you succeed to use this plugin on another versions of OpenCart or PHP let me know.
 
 ## Description
 
@@ -69,7 +71,7 @@ This plugin allows to insert an arbitrary HTML code on any page.
     Extensions -> Extensions -> Modules -> Insert arbitrary html -> Add new
     ```
 
-2. Paster your HTML in text area.
+2. Paste your HTML in text area.
 
 3. Save changes.
 

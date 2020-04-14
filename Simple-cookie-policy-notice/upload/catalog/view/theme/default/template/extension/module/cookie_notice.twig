@@ -51,9 +51,7 @@
                     currentDate.getDay()
                 ).toString();
 
-                var cookieString = 'cookie_consent=1; expires=' + expires + '; path=/';
-
-                document.cookie = cookieString;
+                document.cookie = 'cookie_consent=1; expires=' + expires + '; path=/';
                 $(this).parent().remove();
             })
         });

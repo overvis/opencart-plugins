@@ -3,6 +3,7 @@
 class ControllerExtensionModuleCookieNotice extends Controller {
     private $error = [];
 
+    /** @noinspection DuplicatedCode */
     public function index() {
         $this->load->language('extension/module/cookie_notice');
 
@@ -10,17 +11,13 @@ class ControllerExtensionModuleCookieNotice extends Controller {
 
         $this->load->model('setting/module');
 
-        $queryStringWithUserToken = http_build_query([
-            'user_token' => $this->session->data['user_token']
-        ]);
-
         $queryStringWithUserTokenAndType = http_build_query([
             'user_token' => $this->session->data['user_token'],
             'type' => 'module'
         ]);
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-            if (!isset($this->request->get['module_id'])) {
+            if (empty($this->request->get['module_id'])) {
                 $this->model_setting_module->addModule('cookie_notice', $this->request->post);
             } else {
                 $this->model_setting_module->editModule($this->request->get['module_id'], $this->request->post);
@@ -38,14 +35,20 @@ class ControllerExtensionModuleCookieNotice extends Controller {
         $errorsToData = ['warning', 'name', 'block_color', 'text_color', 'button_color', 'button_color_on_hover'];
 
         foreach ($errorsToData as $value) {
-            $data["error_$value"] = isset($this->error[$value]) ? $this->error[$value] : '';
+            $data["error_$value"] = !empty($this->error[$value]) ? $this->error[$value] : '';
         }
 
         $data['breadcrumbs'] = [];
 
         $data['breadcrumbs'][] = [
             'text' => $this->language->get('text_home'),
-            'href' => $this->url->link('common/dashboard', $queryStringWithUserToken, true)
+            'href' => $this->url->link(
+                'common/dashboard',
+                http_build_query([
+                    'user_token' => $this->session->data['user_token']
+                ]),
+                true
+            )
         ];
 
         $data['breadcrumbs'][] = [
@@ -59,7 +62,9 @@ class ControllerExtensionModuleCookieNotice extends Controller {
                 'extension/module/cookie_notice',
                 $queryStringWithUserTokenAndModuleId = http_build_query([
                     'user_token' => $this->session->data['user_token'],
-                    'module_id' => $this->request->get['module_id'] ?? null
+                    'module_id' => !empty($this->request->get['module_id'])
+                        ? $this->request->get['module_id']
+                        : null
                 ]),
                 true
             )
@@ -77,7 +82,7 @@ class ControllerExtensionModuleCookieNotice extends Controller {
             true
         );
 
-        if (isset($this->request->get['module_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+        if (!empty($this->request->get['module_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
             $moduleInfo = $this->model_setting_module->getModule($this->request->get['module_id']);
         }
 
@@ -91,7 +96,7 @@ class ControllerExtensionModuleCookieNotice extends Controller {
         ];
 
         foreach ($forValidation as $value) {
-            if (isset($this->request->post[$value['name']])) {
+            if (!empty($this->request->post[$value['name']])) {
                 $data[$value['name']] = $this->request->post[$value['name']];
             } elseif (!empty($moduleInfo)) {
                 $data[$value['name']] = $moduleInfo[$value['name']];

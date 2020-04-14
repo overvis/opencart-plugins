@@ -4,7 +4,9 @@ class ControllerExtensionModuleCookieNotice extends Controller {
     public function index($setting) {
         $this->load->language('extension/module/cookie_notice');
 
-        $data['cookie_consent'] = $this->request->cookie['cookie_consent'] ?? false;
+        $data['cookie_consent'] = !empty($this->request->cookie['cookie_consent'])
+            ? $this->request->cookie['cookie_consent']
+            : false;
 
         $fromSettingsToData = ['block_color', 'text_color', 'button_color', 'button_color_on_hover'];
 
