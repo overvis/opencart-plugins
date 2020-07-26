@@ -2,7 +2,7 @@
 
 [View on OpenCart marketplace](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=38006)
 
-## Requirements
+## Compatibility
 
 * OpenCart: 3.0.3.2
 * PHP: >=7.0
