@@ -2,7 +2,7 @@
 <modification>
     <name>Catalog display module</name>
     <code>catalog_display</code>
-    <version>3.x</version>
+    <version>1.0.0</version>
     <author>Garbuzov Alexandr</author>
     <link>https://github.com/overvis/opencart-plugins/tree/master/Catalog-display</link>
 

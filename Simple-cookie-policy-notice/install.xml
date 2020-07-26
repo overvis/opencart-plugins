@@ -2,7 +2,7 @@
 <modification>
     <name>Simple cookie policy notice module</name>
     <code>cookie_notice</code>
-    <version>3.x</version>
+    <version>1.0.0</version>
     <author>Garbuzov Alexandr</author>
     <link>https://github.com/overvis/opencart-plugins/tree/master/Simple-cookie-policy-notice</link>
 </modification>

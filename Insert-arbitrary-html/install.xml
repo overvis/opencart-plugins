@@ -2,7 +2,7 @@
 <modification>
     <name>Insert arbitrary html module</name>
     <code>insert_arbitrary_html</code>
-    <version>3.x</version>
+    <version>1.0.0</version>
     <author>Garbuzov Alexandr</author>
     <link>https://github.com/overvis/opencart-plugins/tree/master/Insert-arbitrary-html</link>
 </modification>
