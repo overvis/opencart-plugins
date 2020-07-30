@@ -33,16 +33,16 @@ The navigation bar is adaptive and will look good on all devices. In the screens
     Extensions -> Extensions Installer -> Upload
     ```
 
-4. Install the plugin:
-
-    ```
-    Extensions -> Extensions -> Modules -> Simple navigation bar -> Install
-    ```
-
-5. Reload plugins cache (Blue button in the upper right corner):
+4. Reload plugins cache (Blue button in the upper right corner):
 
     ```
     Extensions -> Modifications
+    ```
+
+5. Install the plugin:
+
+    ```
+    Extensions -> Extensions -> Modules -> Simple navigation bar -> Install
     ```
 
 6. Go to config page:

@@ -29,16 +29,16 @@ This plugin allows to insert an arbitrary HTML code on any page.
     Extensions -> Extensions Installer -> Upload
     ```
 
-4. Install the plugin:
+4. Reload plugins cache (blue button in the upper right corner):
+
+   ```
+   Extensions -> Modifications
+   ```
+
+5. Install the plugin:
 
     ```
     Extensions -> Extensions -> Modules -> Insert arbitrary html -> Install
-    ```
-
-5. Reload plugins cache (blue button in the upper right corner):
-
-    ```
-    Extensions -> Modifications
     ```
 
 ### Installation by FTP
@@ -51,16 +51,18 @@ This plugin allows to insert an arbitrary HTML code on any page.
 
 4. Extract directories to OpenCart root directory.
 
-5. Install the plugin:
+5. Connect to OpenCart admin panel.
 
-    ```
-    Extensions -> Extensions -> Modules -> Insert arbitrary html -> Install
-    ```
-
-5. Reload plugins cache (blue button in the upper right corner):
+6. Reload plugins cache (blue button in the upper right corner):
 
     ```
     Extensions -> Modifications
+    ```
+
+7. Install the plugin:
+
+    ```
+    Extensions -> Extensions -> Modules -> Insert arbitrary html -> Install
     ```
 
 ### Configuration

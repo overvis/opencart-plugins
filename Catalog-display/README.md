@@ -35,16 +35,16 @@ This plugin provides a module that displays a catalog of products by categories.
     Extensions -> Extensions Installer -> Upload
     ```
 
-4. Install the plugin:
-
-    ```
-    Extensions -> Extensions -> Modules -> Catalog display -> Install
-    ```
-
-5. Reload plugins cache (blue button in the upper right corner):
+4. Reload plugins cache (blue button in the upper right corner):
 
     ```
     Extensions -> Modifications
+    ```
+
+5. Install the plugin:
+
+    ```
+    Extensions -> Extensions -> Modules -> Catalog display -> Install
     ```
 
 6. Find the layout of the page where you want display the catalog:

@@ -33,16 +33,16 @@ The notice bar is adaptive and should fit mobile devices nicely. Screenshot of d
     Extensions -> Extensions Installer -> Upload
     ```
 
-4. Install the plugin:
+4. Reload plugins cache (blue button in the upper right corner):
+
+   ```
+   Extensions -> Modifications
+   ```
+
+5. Install the plugin:
 
     ```
     Extensions -> Extensions -> Modules -> Simple cookie policy notice -> Install
-    ```
-
-5. Reload plugins cache (blue button in the upper right corner):
-
-    ```
-    Extensions -> Modifications
     ```
 
 ### Installation by FTP
@@ -55,16 +55,18 @@ The notice bar is adaptive and should fit mobile devices nicely. Screenshot of d
 
 4. Extract directories to OpenCart root directory.
 
-5. Install the plugin:
+5. Connect to OpenCart admin panel.
 
-    ```
-    Extensions -> Extensions -> Modules -> Simple cookie policy notice -> Install
-    ```
-
-5. Reload plugins cache (blue button in the upper right corner):
+6. Reload plugins cache (blue button in the upper right corner):
 
     ```
     Extensions -> Modifications
+    ```
+
+7. Install the plugin:
+
+    ```
+    Extensions -> Extensions -> Modules -> Simple cookie policy notice -> Install
     ```
 
 ### Configuration
