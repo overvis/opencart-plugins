@@ -77,6 +77,24 @@ The navigation bar is adaptive and will look good on all devices. In the screens
 
 3. Save changes.
 
+## How to remove navigation bar from default template
+
+1. Connect to OpenCart admin panel.
+
+2. Go to theme editor:
+
+    ```
+    Design -> Theme Editor
+    ```
+   
+3. Choose needed template: `common/header.twig`
+
+4. On 81 line replace `{{ menu }}` with `{#{{ menu }}#}`
+
+5. Save changes.
+
+If you know a better way to do this, let me know.
+
 ## License
 
 [MIT](https://github.com/overvis/opencart-plugins/blob/master/LICENSE)
