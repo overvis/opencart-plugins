@@ -4,7 +4,7 @@
 
 ## Compatibility
 
-* OpenCart: 3.0.2.0, 3.0.3.2, 3.0.3.3, 3.0.3.4, 3.0.3.5, 3.0.3.6, 3.0.3.7
+* OpenCart: 3.0.2.0, 3.0.3.2, 3.0.3.3, 3.0.3.4, 3.0.3.5, 3.0.3.6, 3.0.3.7, 3.0.3.8
 * PHP: >=7.0
 
 If you succeed to use this plugin on another versions of OpenCart or PHP let me know.
