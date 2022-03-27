@@ -7,8 +7,8 @@ assignees: ''
 
 ---
 
-**Name of plugin**
-Name of plugin with which problem happened
+**Name of the plugin**
+Name of the plugin with which problem has happened
 
 **Describe the bug**
 A clear and concise description of what the bug is.
